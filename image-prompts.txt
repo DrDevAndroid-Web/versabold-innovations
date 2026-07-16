@@ -1,0 +1,268 @@
+================================================================================
+IMAGE GENERATION PROMPTS FOR VERSABOLD INNOVATIONS — WEB PRINCIPAL
+================================================================================
+
+INSTRUCCIONES:
+1. Usar Higgsfield MCP o similar para generar cada imagen
+2. Guardar en assets/images/ con el nombre exacto indicado
+3. Convertir a WEBP si es posible (mejor rendimiento)
+4. Tamaño recomendado: 1200x800px (hero), 600x400px (cards)
+5. Estilo general: Profesional, confianza, moderno, colores corporativos (azul #0369A1, naranja #F97316)
+
+================================================================================
+HERO SECTION
+================================================================================
+
+FILE: assets/images/hero-main.webp
+PROMPT:
+"Professional digital agency workspace scene showing a creative team collaborating on a modern web design project.
+Computer screens displaying colorful website interfaces, tablets with app mockups, and design tools.
+Modern minimalist office environment with warm professional lighting.
+Colors: navy blue, orange accents, white surfaces.
+Style: contemporary, clean, trustworthy, business-focused.
+Aspect ratio: 16:9"
+
+================================================================================
+PROBLEMA SECTION (4 cards)
+================================================================================
+
+FILE: assets/images/problem-redes-sociales.webp
+PROMPT:
+"Frustrated business owner staring at smartphone with multiple social media apps open and notifications overflowing.
+Lost customers in background.
+Red alert indicators and confusion symbols.
+Dark moody lighting showing stress.
+Color accent: orange warning tone.
+Style: realistic, emotional, relatable problem visualization
+Aspect ratio: 4:3"
+
+FILE: assets/images/problem-control-operacion.webp
+PROMPT:
+"Chaotic business operation scene with scattered papers, overlapping documents, multiple incompatible systems and tools.
+Confused manager surrounded by spreadsheets and sticky notes.
+Tangled cables and disorganized workspace.
+Red zones indicating problems and inefficiency.
+Style: illustrative, showing operational chaos
+Aspect ratio: 4:3"
+
+FILE: assets/images/problem-tareas-manuales.webp
+PROMPT:
+"Business person surrounded by repetitive manual tasks: writing invoices by hand, manually entering data, checking inventory lists by pencil and paper.
+Stacks of paperwork, tired expression, clock showing wasted time.
+Visual indication of monotonous, repetitive work.
+Gray and muted tones with red highlights on time waste.
+Style: realistic, showing tedious manual work
+Aspect ratio: 4:3"
+
+FILE: assets/images/problem-experiencia-cliente.webp
+PROMPT:
+"Amateur, outdated business website displayed on computer screen (poorly designed, low quality graphics, unprofessional layout).
+Customers on other side looking confused and skeptical.
+Contrast with professional competitors shown in background.
+Low trust indicators (no reviews, broken links visible).
+Style: comparative, showing professionalism gap
+Aspect ratio: 4:3"
+
+================================================================================
+SERVICIOS / SOLUTIONS BENTO GRID (6 cards)
+================================================================================
+
+FILE: assets/images/service-paginas-web.webp
+PROMPT:
+"Beautiful modern website design displayed on laptop screen showing professional web interface with smooth animations.
+24/7 availability indicator.
+Visitors converting to customers.
+Professional navy and orange color scheme.
+Abstract code elements flowing in background.
+Style: modern, aspirational, tech-forward
+Aspect ratio: 1:1 (square)"
+
+FILE: assets/images/service-tienda-virtual.webp
+PROMPT:
+"E-commerce shopping experience: attractive product display, shopping cart, multiple payment methods, customers purchasing from different devices (mobile, tablet, desktop).
+Products showcased beautifully with high-quality images.
+Global location markers showing worldwide reach.
+Successful transaction indicators.
+Colors: navy, orange, green for success.
+Style: modern marketplace visualization
+Aspect ratio: 1:1 (square)"
+
+FILE: assets/images/service-apps-moviles.webp
+PROMPT:
+"Smartphone displaying a beautiful, intuitive mobile app interface.
+App running smoothly with engaging UX/UI.
+Multiple users on different phones connected to the app ecosystem.
+Notifications, real-time updates, and seamless interaction.
+Professional mobile design with navy and orange accents.
+App store badges visible.
+Style: modern app showcase
+Aspect ratio: 1:1 (square)"
+
+FILE: assets/images/service-sistemas-gestion.webp
+PROMPT:
+"Modern dashboard interface showing integrated business management system: inventory tracking, sales metrics, real-time data visualization, charts, and reports.
+Multiple data streams flowing into centralized control panel.
+Organization and control emphasized.
+Professional analytics visualization with navy, orange, and green status indicators.
+Everything in one unified platform.
+Style: enterprise dashboard design
+Aspect ratio: 1:1 (square)"
+
+FILE: assets/images/service-landing-pages.webp
+PROMPT:
+"High-converting landing page displayed on screen with clear hero section, compelling copy, strategic CTAs, testimonials, and trust badges.
+Metrics showing high conversion rates and engagement.
+Customers clicking CTAs and converting.
+Split-test variations shown.
+Professional copywriting visible.
+Colors: navy primary, orange CTA buttons.
+Style: conversion-focused design
+Aspect ratio: 1:1 (square)"
+
+FILE: assets/images/service-impresion.webp
+PROMPT:
+"Custom printed products and branded materials displayed beautifully: premium business cards, branded packaging, custom stickers, professional letterheads, and promotional items.
+High-quality printing showcase.
+Brand identity emphasized through consistent colors and design.
+Products arranged on wooden desk with professional lighting.
+Personalization and customization visible.
+Style: premium product photography
+Aspect ratio: 1:1 (square)"
+
+================================================================================
+PROCESO / WORKFLOW SECTION (4 steps)
+================================================================================
+
+FILE: assets/images/proceso-analizar.webp
+PROMPT:
+"Business consultation scene: professional consultant meeting with business owner, analyzing documents and discussing needs.
+Whiteboard with sketches and notes.
+Lightbulb moment showing understanding.
+Detailed planning and research emphasized.
+Warm professional lighting.
+Colors: navy, orange accents for key insights.
+Style: collaborative, consultative
+Aspect ratio: 16:9"
+
+FILE: assets/images/proceso-disenar.webp
+PROMPT:
+"Designer and developer collaborating on digital mockups: sketches on paper, wireframes on screen, design tools open.
+Creative process visualization with concepts, prototypes, and design iterations.
+Multiple design variations shown.
+Color palette and design system visible.
+Modern creative workspace.
+Pencils, tablets, and digital tools shown together.
+Style: creative design process
+Aspect ratio: 16:9"
+
+FILE: assets/images/proceso-desarrollar.webp
+PROMPT:
+"Developer working on code implementation: multiple monitors showing clean code, version control, and development environment.
+Building process with construction metaphor (digital bricks forming structure).
+Testing and quality assurance visible.
+Adjustments and refinements being made.
+Professional development setup.
+Colors: navy background, orange progress indicators.
+Style: technical implementation focus
+Aspect ratio: 16:9"
+
+FILE: assets/images/proceso-acompanar.webp
+PROMPT:
+"Customer support team providing post-launch support: team members on headsets helping clients, dashboard showing system monitoring, success metrics displayed.
+Continuous improvement and ongoing relationship.
+Happy customers receiving support.
+24/7 availability indicators.
+Professional support center environment.
+Style: customer success, long-term partnership
+Aspect ratio: 16:9"
+
+================================================================================
+PROYECTOS / CASE STUDIES SECTION (3 cards)
+================================================================================
+
+FILE: assets/images/proyecto-inventario.webp
+PROMPT:
+"Before/After split screen showing:
+LEFT (Before): Chaotic inventory management with scattered papers and spreadsheets, overwhelmed business owner
+RIGHT (After): Modern inventory system dashboard with organized data, real-time tracking, happy owner celebrating success
+Green checkmark and 'Success' badge overlaid
+Success metrics showing improvement: 85% time saved, 100% accuracy
+Style: transformation visualization
+Aspect ratio: 3:2"
+
+FILE: assets/images/proyecto-tienda.webp
+PROMPT:
+"Before/After split screen:
+LEFT (Before): Empty physical store with no online presence, frustrated owner
+RIGHT (After): Beautiful e-commerce website with active customers buying online, mobile app shown, order notifications
+Sales growth chart overlaid
+Metrics visible: 3x revenue increase, multiple sales channels
+Global reach indicators
+Style: business growth transformation
+Aspect ratio: 3:2"
+
+FILE: assets/images/proyecto-marca.webp
+PROMPT:
+"Before/After split screen:
+LEFT (Before): Amateurish branding, unprofessional business appearance, confused customers
+RIGHT (After): Professional brand identity with custom logos, branded materials, professional stationery, branded packaging
+Customers showing confidence and trust
+Professional brand guidelines visible
+Success badge: 'Professional Brand Established'
+Style: branding transformation
+Aspect ratio: 3:2"
+
+================================================================================
+CTA / FINAL SECTION
+================================================================================
+
+FILE: assets/images/cta-bg.webp
+PROMPT:
+"Subtle professional background for CTA section: abstract gradient with navy and orange tones, geometric shapes suggesting growth and movement.
+Light bokeh effects in background.
+Minimalist, elegant design that doesn't compete with text overlay.
+High contrast area for white text readability.
+Professional, inspiring mood.
+Style: abstract background design
+Aspect ratio: 16:9
+NOTE: This will be used as CSS background-image, keep copy area clear and readable"
+
+================================================================================
+TESTIMONIOS / TESTIMONIALS
+================================================================================
+
+NOTES:
+- Use real photo placeholders (placeholder.com or similar)
+- Or source from free stock photos (Unsplash, Pexels)
+- Size: 100x100px circular portraits
+- Recommended: Professional headshots, diverse representation
+- Save as: assets/images/testimonial-{number}.webp
+
+FILE NAMING CONVENTION:
+assets/images/testimonial-1.webp (Customer 1 portrait)
+assets/images/testimonial-2.webp (Customer 2 portrait)
+assets/images/testimonial-3.webp (Customer 3 portrait)
+
+================================================================================
+RESPONSIVE IMAGE NOTES
+================================================================================
+
+All images should have:
+- Mobile optimized size (max 600px width)
+- Desktop optimized size (max 1200px width)
+- WebP format primary, JPG fallback
+- Lazy loading support (data-src attribute)
+- Srcset for responsive delivery
+
+Example:
+<img
+  src="assets/images/hero-main.webp"
+  alt="Digital agency team collaborating"
+  width="1200"
+  height="800"
+  loading="lazy"
+/>
+
+================================================================================
+END OF IMAGE PROMPTS
+================================================================================
