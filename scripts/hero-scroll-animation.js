@@ -1,156 +1,103 @@
 /* ============================================================
-   HERO SCROLL ANIMATION — Scrub through frames on scroll (SMOOTH)
+   HERO SCROLL ANIMATION — Canvas-based 3D frame scrubbing
+   Technique from prueba_3d: sticky scroll + canvas cover render
    ============================================================ */
 
 (function initHeroAnimation() {
   'use strict';
 
-  const TOTAL_FRAMES = 240;
-  const FRAME_PATH = 'assets/images/hero_images/frame_';
-  const heroVideo = document.querySelector('.hero-video-canvas');
+  const TOTAL  = 240;
+  const BASE   = 'assets/images/hero_images/frame_';
+  const EXT    = '.webp';
 
-  if (!heroVideo) return;
+  // DOM
+  const canvas       = document.getElementById('hero-canvas');
+  const heroScroll   = document.getElementById('hero-scroll');
+  const progressLine = document.getElementById('progress-line');
+  const scrollHint   = document.getElementById('scroll-hint');
+  const ldFill       = document.getElementById('vb-ld-fill');
+  const ldPct        = document.getElementById('vb-ld-pct');
+  const loadingEl    = document.getElementById('vb-loading');
+  const eyebrow      = document.getElementById('hero-eyebrow');
+  const heroH1       = document.getElementById('hero-h1');
+  const heroSub      = document.querySelector('.hero-sub');
+  const heroCtas     = document.getElementById('hero-ctas');
 
-  let currentFrame = 0;
-  let targetFrame = 0;
-  let preloadedImages = {};
-  let lastUpdateTime = 0;
-  const UPDATE_THROTTLE = 16; // ~60fps (16ms)
-  let animationFrameId = null;
+  if (!canvas || !heroScroll) return;
 
-  // ============================================================
-  // PRELOAD CRITICAL FRAMES
-  // ============================================================
-  function preloadFrames() {
-    const criticalFrames = [1, 60, 120, 180, 240];
+  const ctx    = canvas.getContext('2d');
+  const frames = new Array(TOTAL);
+  let loaded   = 0;
+  let current  = 0;
+  let ready    = false;
 
-    criticalFrames.forEach(frameNum => {
-      const img = new Image();
-      const frameStr = String(frameNum).padStart(5, '0');
-      img.src = `${FRAME_PATH}${frameStr}.webp`;
-      preloadedImages[frameNum] = img;
-    });
+  function pad(n) { return String(n).padStart(5, '0'); }
+
+  function resizeCanvas() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    if (ready) drawFrame(current);
   }
 
-  // ============================================================
-  // GET FRAME IMAGE (lazy load on demand)
-  // ============================================================
-  function getFrameImage(frameNum) {
-    if (preloadedImages[frameNum]) {
-      return preloadedImages[frameNum];
-    }
+  // Cover-mode canvas render (same aspect-ratio technique as prueba_3d)
+  function drawFrame(idx) {
+    const img = frames[idx];
+    if (!img || !img.complete || img.naturalWidth === 0) return;
+    const cw = canvas.width, ch = canvas.height;
+    const iw = img.naturalWidth, ih = img.naturalHeight;
+    const scale = Math.max(cw / iw, ch / ih);
+    const w = iw * scale, h = ih * scale;
+    ctx.clearRect(0, 0, cw, ch);
+    ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+  }
 
+  function showHeroText() {
+    if (eyebrow)  eyebrow.classList.add('vis');
+    if (heroH1)   heroH1.classList.add('vis');
+    if (heroSub)  heroSub.classList.add('vis');
+    if (heroCtas) heroCtas.classList.add('vis');
+  }
+
+  // ── Load all frames with progress bar ──────────────────────
+  function onFrameLoad() {
+    loaded++;
+    const pct = Math.round((loaded / TOTAL) * 100);
+    if (ldFill) ldFill.style.width = pct + '%';
+    if (ldPct)  ldPct.textContent  = pct + ' %';
+
+    if (loaded === TOTAL) {
+      ready = true;
+      drawFrame(0);
+      if (loadingEl) loadingEl.classList.add('out');
+      showHeroText();
+    }
+  }
+
+  for (let i = 0; i < TOTAL; i++) {
     const img = new Image();
-    const frameStr = String(frameNum).padStart(5, '0');
-    img.src = `${FRAME_PATH}${frameStr}.webp`;
-    preloadedImages[frameNum] = img;
-    return img;
+    img.src     = BASE + pad(i + 1) + EXT;
+    img.onload  = onFrameLoad;
+    img.onerror = onFrameLoad;
+    frames[i]   = img;
   }
 
-  // ============================================================
-  // UPDATE HERO BACKGROUND FRAME (WITH SMOOTH CROSSFADE)
-  // ============================================================
-  function updateHeroFrame(frameNum) {
-    if (frameNum === currentFrame) return;
-
-    currentFrame = frameNum;
-    const frameStr = String(frameNum).padStart(5, '0');
-    const frameUrl = `${FRAME_PATH}${frameStr}.webp`;
-
-    // Smooth crossfade transition
-    heroVideo.style.backgroundImage = `url('${frameUrl}')`;
-  }
-
-  // ============================================================
-  // SMOOTH ANIMATION LOOP (requestAnimationFrame)
-  // ============================================================
-  function smoothFrameTransition() {
-    if (targetFrame === currentFrame) {
-      animationFrameId = null;
-      return;
-    }
-
-    // Easing function: smooth deceleration
-    const diff = targetFrame - currentFrame;
-    const distance = Math.abs(diff);
-
-    // Adaptive step: larger jumps for big distance, smoother for small distance
-    let step = Math.sign(diff);
-    if (distance > 5) {
-      step *= Math.min(distance * 0.15, 5);
-    }
-
-    const newFrame = Math.round(currentFrame + step);
-    const frame = Math.max(1, Math.min(TOTAL_FRAMES, newFrame));
-
-    updateHeroFrame(frame);
-
-    // Continue animation if not at target
-    if (frame !== targetFrame) {
-      animationFrameId = requestAnimationFrame(smoothFrameTransition);
-    } else {
-      animationFrameId = null;
-    }
-  }
-
-  // ============================================================
-  // CALCULATE FRAME BASED ON SCROLL POSITION (THROTTLED)
-  // ============================================================
+  // ── Scroll handler ──────────────────────────────────────────
   function onScroll() {
-    const now = performance.now();
+    const sectionH = heroScroll.offsetHeight - window.innerHeight;
+    const rawProg  = Math.min(Math.max(window.scrollY / sectionH, 0), 1);
 
-    // Throttle updates (16ms = ~60fps)
-    if (now - lastUpdateTime < UPDATE_THROTTLE) {
-      return;
+    const idx = Math.min(Math.floor(rawProg * TOTAL), TOTAL - 1);
+    if (idx !== current) {
+      current = idx;
+      if (ready) drawFrame(current);
     }
-    lastUpdateTime = now;
 
-    // Get scroll progress (0 to 1) from hero section
-    const heroSection = document.querySelector('.hero');
-    if (!heroSection) return;
-
-    const rect = heroSection.getBoundingClientRect();
-    const heroHeight = heroSection.offsetHeight;
-
-    // Calculate how far we've scrolled through the hero section
-    // When hero is at top of viewport = frame 1
-    // When hero scrolls past = frame 240
-    let scrollProgress = 1 - (rect.bottom / (window.innerHeight + heroHeight));
-    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
-
-    // Map scroll progress to frame number (1-240)
-    const newTargetFrame = Math.ceil(scrollProgress * TOTAL_FRAMES);
-    targetFrame = Math.max(1, Math.min(TOTAL_FRAMES, newTargetFrame));
-
-    // Trigger smooth animation (only if not already animating)
-    if (!animationFrameId) {
-      smoothFrameTransition();
-    }
+    if (progressLine) progressLine.style.width = (rawProg * 100) + '%';
+    if (scrollHint)   scrollHint.classList.toggle('gone', window.scrollY > 80);
   }
 
-  // ============================================================
-  // INITIALIZE
-  // ============================================================
-  function init() {
-    preloadFrames();
-    updateHeroFrame(1); // Start with frame 1
-
-    // Scroll listener with passive flag for performance
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Initial call
-    onScroll();
-  }
-
-  // Wait for DOM ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-  // Cleanup
-  window.setupHeroAnimation = function() {
-    init();
-  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+  onScroll();
 })();
