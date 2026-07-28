@@ -9,73 +9,30 @@
   // HERO SECTION — SCROLL-DRIVEN ANIMATION
   // ============================================================
   function renderHero() {
-    const heroInnerEl = document.querySelector('.hero-inner');
-    if (!heroInnerEl) return;
-
     const h = d.hero;
-    heroInnerEl.innerHTML = `
-      ${h.badge ? `
-      <div class="hero-badge" data-aos>
-        ${window.icon('check', 16)}
-        ${h.badge}
-      </div>
-      ` : ''}
 
-      <h1 class="hero-h1" data-aos>${h.h1}</h1>
-      <p class="hero-intro" data-aos>${h.intro}</p>
+    // H1 (canvas-hero layout uses #hero-h1 div)
+    const heroH1El = document.getElementById('hero-h1');
+    if (heroH1El) {
+      heroH1El.innerHTML = h.h1;
+    }
 
-      <div class="hero-ctas" data-aos>
-        <a href="${h.cta_primary.href}" class="${h.cta_primary.class}">
+    // CTAs
+    const heroCtas = document.getElementById('hero-ctas');
+    if (heroCtas) {
+      heroCtas.innerHTML = `
+        <a href="${h.cta_primary.href}" class="${h.cta_primary.class}" target="_blank" rel="noopener noreferrer">
           ${h.cta_primary.text}
         </a>
         <a href="${h.cta_secondary.href}" class="${h.cta_secondary.class}">
           ${h.cta_secondary.text}
         </a>
-      </div>
+      `;
+    }
 
-      <!-- Trust badges -->
-      <div class="hero-trust-badges" data-aos>
-        ${h.trust_items.map(item => `
-          <div class="hero-trust-item">
-            ${window.icon('check', 16)}
-            <span>${item}</span>
-          </div>
-        `).join('')}
-      </div>
-    `;
   }
 
-  // ============================================================
-  // PROBLEMA SECTION
-  // ============================================================
-  function renderProblema() {
-    const problemEl = document.getElementById('problem-grid');
-    if (!problemEl) return;
-
-    const p = d.problema;
-    const grid = `
-      <div class="problem-grid">
-        ${p.cards.map((card, i) => `
-          <div class="problem-card" data-aos>
-            <img
-              src="${card.image}"
-              alt="${card.alt}"
-              title="${card.titleAttr}"
-              width="400"
-              height="300"
-              loading="lazy"
-              class="problem-card-image"
-            />
-            <div class="problem-content">
-              <h3 class="problem-title">${card.title}</h3>
-              <p class="problem-text">${card.text}</p>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-    problemEl.innerHTML = grid;
-  }
+  // Problema section ahora está hardcodeada en el HTML (carrusel Bootstrap)
 
   // ============================================================
   // LEAD MAGNET — WHATSAPP GROUP
@@ -137,37 +94,140 @@
   }
 
   // ============================================================
-  // PROCESO SECTION
+  // PROCESO SECTION — scroll gallery
   // ============================================================
   function renderProceso() {
-    const procEl = document.getElementById('process-steps');
-    if (!procEl) return;
+    const grid = document.getElementById('process-steps');
+    const track = document.getElementById('proceso-track');
+    if (!grid || !track) return;
 
-    const p = d.proceso;
-    const steps = `
-      <div class="process-fullscreen">
-        ${p.steps.map((step, i) => `
-          <div class="process-slide ${i % 2 === 1 ? 'slide-reverse' : ''}">
-            <div class="slide-image">
-              <img
-                src="${step.image}"
-                alt="${step.alt}"
-                width="800"
-                height="600"
-                loading="lazy"
-                class="slide-img"
-              />
-            </div>
-            <div class="slide-content">
-              <div class="slide-number">${step.number}</div>
-              <h3 class="slide-title">${step.title}</h3>
-              <p class="slide-desc">${step.text}</p>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-    procEl.innerHTML = steps;
+    const steps = d.proceso.steps;
+    const N = steps.length;
+
+    // Set scroll-track height: N steps × 120vh
+    track.style.height = `${N * 120}vh`;
+
+    // Layout: [left%, top%, width%, height%] per card per active index
+    // Active card = ~55% wide × 100% tall; others = ~(45%/3) wide × 50% tall
+    const GAP = 1.2;
+    function buildLayout(activeIdx) {
+      // 4-column conceptual grid (same logic as scroll-gallery prototype)
+      const cols = 4, rows = 2;
+      const cellW = (100 - GAP * (cols - 1)) / cols;
+      const cellH = (100 - GAP * (rows - 1)) / rows;
+
+      // Active block positions cycling per index
+      const activeCol = [0, 2, 0, 2][activeIdx] ?? 0;
+
+      const aL = activeCol * (cellW + GAP);
+      const aW = cellW * 2 + GAP;
+      const layout = new Array(N);
+      layout[activeIdx] = { l: aL, t: 0, w: aW, h: 100 };
+
+      // Free 1×1 cells (columns NOT covered by active block)
+      const freeCells = [];
+      for (let c = 0; c < cols; c++) {
+        if (c < activeCol || c >= activeCol + 2) {
+          for (let r = 0; r < rows; r++) freeCells.push({ c, r });
+        }
+      }
+
+      const others = steps.map((_, i) => i).filter(i => i !== activeIdx);
+      others.forEach((idx, fi) => {
+        const cell = freeCells[fi] ?? freeCells[freeCells.length - 1];
+        layout[idx] = {
+          l: cell.c * (cellW + GAP),
+          t: cell.r * (cellH + GAP),
+          w: cellW,
+          h: cellH,
+        };
+      });
+      return layout;
+    }
+
+    // Pre-compute all layouts
+    const LAYOUTS = steps.map((_, i) => buildLayout(i));
+
+    // Build card elements
+    const cardEls = steps.map((step, i) => {
+      const card = document.createElement('article');
+      card.className = 'proceso-card';
+      card.setAttribute('role', 'listitem');
+      card.setAttribute('aria-label', step.title);
+
+      card.innerHTML = `
+        <img src="${step.image}" alt="${step.alt}" width="800" height="600" loading="${i === 0 ? 'eager' : 'lazy'}">
+        <div class="proceso-copy">
+          <span class="step-num">Paso ${step.number}</span>
+          <h3 class="step-title">${step.title}</h3>
+          <p class="step-desc">${step.text}</p>
+        </div>`;
+
+      grid.appendChild(card);
+      return card;
+    });
+
+    // Dots — usa el contenedor ya en el HTML (fixed al viewport)
+    const dotsContainer = document.getElementById('proceso-dots');
+
+    const dotEls = steps.map((step, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'proceso-dot';
+      btn.setAttribute('aria-label', `Ir al paso ${i + 1}: ${step.title}`);
+      btn.addEventListener('click', () => scrollToStep(i));
+      dotsContainer.appendChild(btn);
+      return btn;
+    });
+
+    // Apply layout
+    let currentStep = -1;
+    function applyStep(idx) {
+      if (idx === currentStep) return;
+      currentStep = idx;
+      const layout = LAYOUTS[idx];
+      cardEls.forEach((el, i) => {
+        const r = layout[i];
+        el.style.left    = `${r.l}%`;
+        el.style.top     = `${r.t}%`;
+        el.style.width   = `${r.w}%`;
+        el.style.height  = `${r.h}%`;
+        el.style.zIndex  = i === idx ? '10' : '1';
+        el.style.opacity = i === idx ? '1' : '0.38';
+        el.classList.toggle('is-active',   i === idx);
+        el.classList.toggle('is-inactive', i !== idx);
+      });
+      dotEls.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    // Scroll to step
+    function scrollToStep(idx) {
+      const stepH = track.offsetHeight / N;
+      window.scrollTo({ top: track.offsetTop + idx * stepH + stepH * 0.3, behavior: 'smooth' });
+    }
+
+    // Scroll listener
+    function onProcesoScroll() {
+      const trackTop    = track.offsetTop;
+      const trackBottom = trackTop + track.offsetHeight;
+      const scrollY     = window.scrollY;
+      const vh          = window.innerHeight;
+
+      // Mostrar dots solo mientras la sección está en pantalla
+      const inView = scrollY + vh > trackTop && scrollY < trackBottom;
+      dotsContainer.classList.toggle('visible', inView);
+
+      const trackScroll = scrollY - trackTop;
+      const stepH = track.offsetHeight / N;
+      const raw   = trackScroll / stepH;
+      const idx   = Math.max(0, Math.min(N - 1, Math.floor(raw)));
+      applyStep(idx);
+    }
+
+    window.addEventListener('scroll', onProcesoScroll, { passive: true });
+
+    // Init
+    applyStep(0);
+    onProcesoScroll();
   }
 
   // ============================================================
@@ -352,7 +412,6 @@
   // ============================================================
   function init() {
     renderHero();
-    renderProblema();
     renderPropuesta();
     renderServicios();
     renderProceso();

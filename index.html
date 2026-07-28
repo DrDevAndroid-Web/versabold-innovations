@@ -18,6 +18,9 @@
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
 
@@ -62,206 +65,236 @@
     }
 
     /* ============================================================
-       HERO SECTION — SCROLL-DRIVEN BACKGROUND (FULL WIDTH)
+       LOADING SCREEN
        ============================================================ */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+    #vb-loading {
+      position: fixed; inset: 0; z-index: 9999;
       background: var(--c-primary);
-      color: var(--c-text-inverse);
-      overflow: hidden;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 28px;
+      transition: opacity .7s ease, visibility .7s ease;
     }
+    #vb-loading.out { opacity: 0; visibility: hidden; pointer-events: none; }
 
-    /* Animated background frames (FULL WIDTH) */
-    .hero-video-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      z-index: 0;
-      /* Smooth crossfade between frames */
-      transition: background-image 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    .vb-ld-logo {
+      font-size: 28px; font-weight: 700;
+      letter-spacing: .06em; color: #FFFFFF;
     }
+    .vb-ld-logo span { color: var(--c-cta); }
 
-    /* Dark overlay for text readability (gradient left to right) */
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(15, 23, 42, 0.95) 0%,
-        rgba(15, 23, 42, 0.85) 30%,
-        rgba(15, 23, 42, 0.60) 60%,
-        rgba(15, 23, 42, 0.40) 100%
-      );
-      z-index: 1;
-      pointer-events: none;
+    .vb-ld-track {
+      width: 220px; height: 1px;
+      background: rgba(255,255,255,.12);
+      position: relative; overflow: hidden;
     }
-
-    /* Content container (left side, on top of overlay/animation) */
-    .hero .container {
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
-      margin-left: var(--container-px);
-      margin-right: auto;
-      width: 100%;
+    .vb-ld-fill {
+      position: absolute; inset-block: 0; left: 0;
+      background: var(--c-cta);
+      width: 0%; transition: width 80ms linear;
     }
-
-    .hero-inner {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-8);
-    }
-
-    /* Hero text styles with strong contrast */
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--sp-2);
-      background: rgba(3, 105, 161, 0.15);
-      border: 1px solid rgba(14, 165, 233, 0.25);
-      border-radius: var(--r-full);
-      padding: var(--sp-2) var(--sp-4);
-      font-size: var(--fs-sm);
-      font-weight: var(--fw-semibold);
-      color: var(--clr-blue-500);
-      margin-bottom: var(--sp-6);
-      width: fit-content;
-      animation: fadeSlideDown 0.5s ease forwards;
-    }
-
-    .hero-badge .icon {
-      color: var(--clr-blue-500);
-    }
-
-    .hero-h1 {
-      font-size: clamp(var(--fs-4xl), 7vw, 5.5rem);
-      font-weight: var(--fw-extrabold);
-      line-height: var(--lh-tight);
-      letter-spacing: -0.025em;
-      margin-bottom: var(--sp-6);
-      animation: fadeSlideDown 0.6s 0.1s ease both;
-      color: #FFFFFF;
-      text-shadow:
-        0 4px 32px rgba(2, 6, 23, 0.95),
-        0 2px 8px rgba(2, 6, 23, 0.90);
-    }
-
-    .hero-h1 em {
-      font-style: normal;
-      color: var(--c-cta);
-      text-shadow:
-        0 4px 28px rgba(249, 115, 22, 0.60),
-        0 2px 6px rgba(2, 6, 23, 0.85);
-    }
-
-    .hero-intro {
-      font-size: clamp(var(--fs-lg), 3vw, 1.75rem);
-      color: #E2E8F0;
-      line-height: var(--lh-relaxed);
-      margin-bottom: var(--sp-8);
-      max-width: 640px;
-      animation: fadeSlideDown 0.6s 0.2s ease both;
-      text-shadow: 0 2px 16px rgba(2, 6, 23, 0.90);
-    }
-
-    .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--sp-3);
-      animation: fadeSlideDown 0.6s 0.3s ease both;
-    }
-
-    .hero-trust-badges {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-3);
-      margin-top: var(--sp-12);
-    }
-
-    .hero-trust-item {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--sp-2);
-      font-size: var(--fs-sm);
-      color: #E2E8F0;
-      width: fit-content;
-    }
-
-    .hero-trust-item .icon {
-      color: var(--c-success);
-      flex-shrink: 0;
-    }
-
-    /* Mobile layout */
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        justify-content: center;
-        min-height: 600px;
-        padding: var(--sp-24) 0;
-      }
-
-      .hero-video-canvas {
-        width: 100%;
-        height: 100%;
-      }
-
-      .hero-overlay {
-        background: linear-gradient(
-          180deg,
-          rgba(15, 23, 42, 0.90) 0%,
-          rgba(15, 23, 42, 0.85) 50%,
-          rgba(15, 23, 42, 0.95) 100%
-        );
-      }
-
-      .hero .container {
-        max-width: 100%;
-        margin-left: var(--container-px);
-        margin-right: var(--container-px);
-        padding: 0;
-      }
-
-      .hero-ctas {
-        flex-direction: column;
-      }
-
-      .hero-ctas .btn {
-        width: 100%;
-      }
+    .vb-ld-pct {
+      font-size: 11px; letter-spacing: .25em;
+      color: rgba(255,255,255,.5); text-transform: uppercase;
     }
 
     /* ============================================================
-       PROBLEMA SECTION
+       HERO SECTION — SCROLL-DRIVEN 3D CANVAS ANIMATION
        ============================================================ */
-    .problem-card-image {
-      width: 100%;
-      height: 240px;
+    #hero-scroll {
+      height: 700vh;
+      position: relative;
+    }
+
+    #hero-sticky {
+      position: sticky; top: 0;
+      width: 100%; height: 100vh;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    #hero-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      display: block;
+    }
+
+    /* Vignette radial + linear (like prueba_3d) */
+    .hero-vignette {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(15,23,42,.7) 100%),
+        linear-gradient(to bottom, rgba(15,23,42,.55) 0%, transparent 20%, transparent 65%, rgba(15,23,42,.85) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Hero text — centered bottom */
+    .hero-text {
+      position: absolute;
+      left: 0; right: 0; bottom: 80px;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      pointer-events: none;
+      z-index: 2;
+      padding: 0 var(--container-px);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .32em; text-transform: uppercase;
+      color: var(--clr-orange-500);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .6s ease .1s, transform .6s ease .1s;
+    }
+    .hero-eyebrow.vis { opacity: 1; transform: translateY(0); }
+
+    #hero-h1 {
+      margin-top: 14px;
+      font-size: clamp(var(--fs-4xl), 9vw, 5.5rem);
+      font-weight: var(--fw-extrabold);
+      line-height: var(--lh-tight);
+      letter-spacing: -0.025em;
+      color: #FFFFFF;
+      text-shadow: 0 4px 48px rgba(0,0,0,.9);
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    #hero-h1 em {
+      font-style: normal;
+      color: var(--c-cta);
+    }
+    #hero-h1.vis { opacity: 1; transform: translateY(0); }
+
+    .hero-sub {
+      margin-top: 18px;
+      font-size: clamp(13px, 1.6vw, 16px);
+      font-weight: 300; letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      opacity: 0;
+      transition: opacity .9s ease .25s;
+    }
+    .hero-sub.vis { opacity: 1; }
+
+    .hero-ctas {
+      margin-top: 32px;
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      pointer-events: all;
+      opacity: 0;
+      transition: opacity .9s ease .4s;
+    }
+    .hero-ctas.vis { opacity: 1; }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+      color: rgba(255,255,255,.45);
+      font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+      transition: opacity .4s ease;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .scroll-hint.gone { opacity: 0; }
+    .scroll-hint-bar {
+      width: 1px; height: 52px;
+      background: linear-gradient(to bottom, transparent, var(--c-cta));
+      animation: vb-pulse-bar 1.8s ease-in-out infinite;
+    }
+    @keyframes vb-pulse-bar {
+      0%,100% { opacity: .25; transform: scaleY(.5); transform-origin: top; }
+      50%      { opacity: 1;   transform: scaleY(1);   transform-origin: top; }
+    }
+
+    /* Progress line */
+    .progress-line {
+      position: absolute; bottom: 0; left: 0;
+      height: 2px; background: var(--c-cta);
+      width: 0%; will-change: width;
+      z-index: 3;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      #hero-scroll { height: 500vh; }
+      .hero-text { bottom: 60px; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+    }
+
+    /* ============================================================
+       PROBLEMA SECTION — Carrusel Bootstrap
+       ============================================================ */
+    .problema-carousel {
+      max-width: 860px;
+      margin-inline: auto;
+    }
+
+    .rounded-carousel {
+      border-radius: var(--r-xl);
+      overflow: hidden;
+    }
+
+    .problema-img {
+      height: 340px;
       object-fit: cover;
-      border-radius: var(--r-lg) var(--r-lg) 0 0;
-      margin: calc(var(--sp-6) * -1) calc(var(--sp-6) * -1) var(--sp-4) calc(var(--sp-6) * -1);
+      object-position: center;
     }
 
-    .problem-content {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-3);
+    .problema-caption {
+      background: linear-gradient(to top, rgba(15,23,42,.92) 0%, rgba(15,23,42,.5) 70%, transparent 100%);
+      padding: 2rem 2.5rem 2rem;
+      text-align: left;
+      bottom: 0; left: 0; right: 0;
+      top: auto;
+      /* override Bootstrap's default positioning */
+      position: absolute;
     }
 
-    @media (min-width: 768px) {
-      .problem-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--sp-6);
-      }
+    .problema-caption h3 {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: var(--fw-bold);
+      color: #fff;
+      margin-bottom: .5rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.6);
+    }
+
+    .problema-caption p {
+      font-size: clamp(.85rem, 1.5vw, 1rem);
+      color: rgba(255,255,255,.8);
+      margin: 0;
+      max-width: 520px;
+    }
+
+    /* Indicadores en color naranja */
+    #carouselProblema .carousel-indicators [data-bs-target] {
+      background-color: var(--c-cta);
+      opacity: .5;
+      border-radius: 2px;
+      width: 28px; height: 3px;
+    }
+    #carouselProblema .carousel-indicators .active {
+      opacity: 1;
+    }
+
+    /* Flechas con color de marca */
+    #carouselProblema .carousel-control-prev,
+    #carouselProblema .carousel-control-next {
+      width: 44px;
+    }
+    #carouselProblema .carousel-control-prev-icon,
+    #carouselProblema .carousel-control-next-icon {
+      background-color: var(--c-cta);
+      border-radius: 50%;
+      padding: 18px;
+      background-size: 50%;
+    }
+
+    @media (max-width: 600px) {
+      .problema-img { height: 200px; }
+      .problema-caption { padding: 1rem; }
     }
 
     /* ============================================================
@@ -878,6 +911,13 @@
   </style>
 </head>
 <body>
+  <!-- LOADING SCREEN -->
+  <div id="vb-loading">
+    <div class="vb-ld-logo">Versa<span>Bold</span></div>
+    <div class="vb-ld-track"><div class="vb-ld-fill" id="vb-ld-fill"></div></div>
+    <div class="vb-ld-pct" id="vb-ld-pct">0 %</div>
+  </div>
+
   <!-- Skip Link for Accessibility -->
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
@@ -887,30 +927,132 @@
   <!-- Main Content -->
   <main id="main-content">
     <!-- ============================================================
-         1. HERO SECTION
+         1. HERO SECTION — SCROLL-DRIVEN 3D CANVAS ANIMATION
          ============================================================ -->
-    <section class="hero" aria-labelledby="hero-h1">
-      <!-- Animated background (right side) -->
-      <div class="hero-video-canvas"></div>
-      <div class="hero-overlay"></div>
+    <section id="hero-scroll" aria-labelledby="hero-h1">
+      <div id="hero-sticky">
+        <!-- Canvas for frame-by-frame 3D animation -->
+        <canvas id="hero-canvas"></canvas>
 
-      <!-- Content (left side) -->
-      <div class="container">
-        <div class="hero-inner"></div>
+        <!-- Vignette overlay (radial + linear) -->
+        <div class="hero-vignette"></div>
+
+        <!-- Content centered at bottom -->
+        <div class="hero-text">
+          <p class="hero-eyebrow" id="hero-eyebrow">Agencia Digital</p>
+          <h1 id="hero-h1"></h1>
+          <p class="hero-sub" id="hero-sub">Soluciones digitales para crecer</p>
+          <div class="hero-ctas" id="hero-ctas"></div>
+        </div>
+
+        <!-- Scroll hint -->
+        <div class="scroll-hint" id="scroll-hint">
+          <span>Scroll</span>
+          <div class="scroll-hint-bar"></div>
+        </div>
+
+        <!-- Progress line -->
+        <div class="progress-line" id="progress-line"></div>
       </div>
     </section>
 
     <!-- ============================================================
-         2. PROBLEMA SECTION
+         2. PROBLEMA SECTION — Carrusel Bootstrap
          ============================================================ -->
-    <section class="section section-alt" aria-labelledby="problema-heading">
+    <section class="section section-alt problema-section" aria-labelledby="problema-heading">
       <div class="container">
         <div class="section-header">
           <span class="section-label">Tu desafío</span>
           <h2 id="problema-heading" class="section-heading">Tu negocio puede estar perdiendo oportunidades sin darte cuenta.</h2>
           <p class="section-sub">Muchos negocios tienen buenos productos, pero enfrentan problemas que frenan su crecimiento:</p>
         </div>
-        <div id="problem-grid"></div>
+
+        <div id="carouselProblema" class="carousel slide problema-carousel" data-bs-ride="carousel" data-bs-interval="4000">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselProblema" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Problema 1"></button>
+            <button type="button" data-bs-target="#carouselProblema" data-bs-slide-to="1" aria-label="Problema 2"></button>
+            <button type="button" data-bs-target="#carouselProblema" data-bs-slide-to="2" aria-label="Problema 3"></button>
+            <button type="button" data-bs-target="#carouselProblema" data-bs-slide-to="3" aria-label="Problema 4"></button>
+          </div>
+
+          <div class="carousel-inner rounded-carousel">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <img
+                src="assets/images/problem-redes-sociales.webp"
+                class="d-block w-100 problema-img"
+                alt="Problema: Dependencia de redes sociales"
+                title="Dependencia de redes sociales para tu negocio"
+                width="1200" height="600"
+                loading="eager"
+              >
+              <div class="carousel-caption problema-caption">
+                <h3>Dependes solo de redes sociales</h3>
+                <p>Tus clientes no siempre encuentran tu negocio cuando buscan soluciones.</p>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <img
+                src="assets/images/problem-control-operacion.webp"
+                class="d-block w-100 problema-img"
+                alt="Problema: Falta de control operacional"
+                title="Falta de control en tu operación"
+                width="1200" height="600"
+                loading="lazy"
+              >
+              <div class="carousel-caption problema-caption">
+                <h3>No tienes control completo de tu operación</h3>
+                <p>Ventas, inventario y pedidos pueden convertirse en un caos.</p>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+              <img
+                src="assets/images/problem-tareas-manuales.webp"
+                class="d-block w-100 problema-img"
+                alt="Problema: Tareas manuales repetitivas"
+                title="Tareas manuales que consumen tiempo"
+                width="1200" height="600"
+                loading="lazy"
+              >
+              <div class="carousel-caption problema-caption">
+                <h3>Pierdes tiempo haciendo tareas manuales</h3>
+                <p>Procesos repetitivos que podrían estar automatizados.</p>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="carousel-item">
+              <img
+                src="assets/images/problem-experiencia-cliente.webp"
+                class="d-block w-100 problema-img"
+                alt="Problema: Falta de profesionalismo"
+                title="Presentación poco profesional de tu negocio"
+                width="1200" height="600"
+                loading="lazy"
+              >
+              <div class="carousel-caption problema-caption">
+                <h3>Tus clientes esperan una experiencia más profesional</h3>
+                <p>La forma en que presentas tu negocio influye en la decisión de compra.</p>
+              </div>
+            </div>
+
+          </div><!-- /.carousel-inner -->
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProblema" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProblema" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div><!-- /#carouselProblema -->
+
       </div>
     </section>
 
@@ -935,13 +1077,20 @@
     <!-- ============================================================
          5. PROCESO SECTION
          ============================================================ -->
-    <section class="section section-dark" id="proceso" aria-labelledby="proceso-heading">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">Nuestro método</span>
-          <h2 id="proceso-heading" class="section-heading">Un proceso claro, sin complicaciones</h2>
+    <section class="section-dark" id="proceso" aria-labelledby="proceso-heading">
+      <!-- Scroll track ocupa toda la sección — el sticky vive dentro -->
+      <div class="proceso-track" id="proceso-track">
+        <div class="proceso-stage" id="proceso-stage">
+          <!-- Header visible dentro del sticky -->
+          <div class="proceso-stage-header">
+            <span class="section-label">Nuestro método</span>
+            <h2 id="proceso-heading" class="section-heading">Un proceso claro, sin complicaciones</h2>
+          </div>
+          <!-- Dots -->
+          <div class="proceso-dots" id="proceso-dots" aria-label="Pasos del proceso"></div>
+          <!-- Grid de cartas -->
+          <div class="proceso-grid" id="process-steps" role="list"></div>
         </div>
-        <div id="process-steps"></div>
       </div>
     </section>
 
@@ -958,18 +1107,7 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         7. PROYECTOS SECTION
-         ============================================================ -->
-    <section class="section" id="proyectos" aria-labelledby="proyectos-heading">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">Resultados reales</span>
-          <h2 id="proyectos-heading" class="section-heading">Soluciones creadas para negocios reales</h2>
-        </div>
-        <div id="projects-grid"></div>
-      </div>
-    </section>
+    
 
     <!-- ============================================================
          8. TESTIMONIOS SECTION
@@ -1004,6 +1142,9 @@
 
   <!-- Footer (injected by footer.js) -->
   <div id="footer-root"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
   <!-- Scripts (in order of dependency) -->
   <script src="assets/icons.js"></script>
