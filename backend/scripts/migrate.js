@@ -215,23 +215,24 @@ ALTER TABLE public.vb_site_sections    ENABLE ROW LEVEL SECURITY;
 async function migrate() {
   console.log('🚀 Iniciando migración VersaBold...\n');
 
-  // Paso 1: crear función exec_sql para poder correr DDL
-  console.log('1/5 Creando función exec_sql...');
-  const { error: e0 } = await supabase.rpc('exec_sql', { sql: 'SELECT 1' }).catch(() => ({ error: true }));
-  if (e0) {
-    // La función no existe aún — crearla directamente via SQL API de Supabase
-    // Usar el endpoint de Supabase para ejecutar SQL de admin
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/`, {
-      method: 'GET',
-      headers: { apikey: SUPABASE_SERVICE_ROLE_KEY, Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}` },
-    });
-    // Intentar via pg extension
-    console.log('   Función exec_sql no existe — se debe crear manualmente en el SQL Editor de Supabase.');
-    console.log('   Ejecuta esto en https://supabase.com/dashboard/project/fuduzzsfaacdtqvsyaos/sql/new:\n');
-    console.log(CREATE_EXEC_SQL);
-    console.log('\n   Luego vuelve a ejecutar: node scripts/migrate.js\n');
+  // Paso 1: verificar que exec_sql existe (se crea manualmente en el SQL Editor)
+  console.log('1/5 Verificando función exec_sql...');
+  let execSqlOk = false;
+  try {
+    const { error } = await supabase.rpc('exec_sql', { sql: 'SELECT 1' });
+    execSqlOk = !error;
+  } catch (_) {
+    execSqlOk = false;
+  }
+
+  if (!execSqlOk) {
+    console.log('\n❌ La función exec_sql no existe en Supabase.\n');
+    console.log('   Ve al SQL Editor: https://supabase.com/dashboard/project/fuduzzsfaacdtqvsyaos/sql/new');
+    console.log('   Ejecuta el archivo: backend/scripts/step1_create_exec_sql.sql');
+    console.log('   Luego vuelve a correr: node scripts/migrate.js\n');
     process.exit(1);
   }
+  console.log('   ✓ exec_sql disponible\n');
 
   // Paso 2: drop tablas viejas
   console.log('2/5 Eliminando tablas anteriores...');
