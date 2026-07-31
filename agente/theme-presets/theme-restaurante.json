@@ -1,0 +1,11 @@
+{
+  "_negocio": "Restaurante / cafetería / panadería / repostería",
+  "primary_color": "#7c2d12",
+  "secondary_color": "#c2410c",
+  "accent_color": "#fbbf24",
+  "background_color": "#fffbf0",
+  "text_color": "#1c0a00",
+  "font_style": "bold",
+  "button_style": "soft",
+  "layout_style": "default"
+}

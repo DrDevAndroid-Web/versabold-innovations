@@ -1,0 +1,35 @@
+{
+  "client_id": "demo_negocio",
+  "business_name": "Mi Negocio Demo",
+  "slug": "demo-negocio",
+  "plan": "free",
+  "business_type": "tienda",
+  "slogan": "Calidad y precio justo en Guantánamo",
+  "short_description": "Tu tienda de confianza en el barrio. Encuentra lo que necesitas sin salir de casa.",
+  "long_description": "Somos un negocio familiar con años de experiencia sirviendo a la comunidad de Guantánamo. Nos especializamos en ofrecer productos de calidad a precios accesibles, con la atención personalizada que mereces.",
+  "logo": "img/logo.webp",
+  "banner_image": "img/banner.webp",
+  "whatsapp": "5356000000",
+  "email": "demo@ejemplo.com",
+  "social_links": {
+    "facebook": "https://facebook.com/",
+    "instagram": null
+  },
+  "address": "Calle Ejemplo #123 entre Calles A y B, Guantánamo",
+  "map_url": "https://maps.google.com/?q=Guantanamo,Cuba",
+  "opening_hours": {
+    "label": "Lunes a Sábado de 8:00 AM a 8:00 PM",
+    "sunday": "10:00 AM – 2:00 PM"
+  },
+  "active_sections": [
+    "hero",
+    "productos_destacados",
+    "catalogo",
+    "galeria",
+    "horarios",
+    "mapa",
+    "sobre_nosotros",
+    "contacto"
+  ],
+  "versabold_branding": true
+}

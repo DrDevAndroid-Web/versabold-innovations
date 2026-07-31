@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+Thumbs.db
+
+# Builds de clientes (van en CLIENTES/, no en el repo del proyecto)
+# Si algún día mueves builds acá, ignóralos:
+clients-builds/
+
+# Archivos de deployment-notes por cliente (info interna)
+**/deployment-notes.md

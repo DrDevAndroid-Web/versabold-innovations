@@ -1,0 +1,14 @@
+[
+  {
+    "id": "g1",
+    "url": "img/gallery/foto-1.webp",
+    "alt": "Vista del local",
+    "caption": "Nuestro local en Guantánamo"
+  },
+  {
+    "id": "g2",
+    "url": "img/gallery/foto-2.webp",
+    "alt": "Productos disponibles",
+    "caption": null
+  }
+]

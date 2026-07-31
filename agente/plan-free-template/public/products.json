@@ -1,0 +1,35 @@
+[
+  {
+    "id": "prod-001",
+    "name": "Producto Ejemplo A",
+    "category": "Categoría 1",
+    "description": "Descripción breve del producto. Calidad garantizada.",
+    "price": 150,
+    "image": "img/products/producto-a.webp",
+    "available": true,
+    "featured": true,
+    "whatsapp_message": "Hola, me interesa: Producto Ejemplo A — $150 CUP"
+  },
+  {
+    "id": "prod-002",
+    "name": "Producto Ejemplo B",
+    "category": "Categoría 1",
+    "description": "Otro producto de excelente calidad al mejor precio.",
+    "price": 200,
+    "image": "img/products/producto-b.webp",
+    "available": true,
+    "featured": true,
+    "whatsapp_message": "Hola, me interesa: Producto Ejemplo B — $200 CUP"
+  },
+  {
+    "id": "prod-003",
+    "name": "Producto Ejemplo C",
+    "category": "Categoría 2",
+    "description": "Producto disponible en tienda y entrega a domicilio.",
+    "price": 80,
+    "image": "img/products/producto-c.webp",
+    "available": true,
+    "featured": false,
+    "whatsapp_message": "Hola, me interesa: Producto Ejemplo C — $80 CUP"
+  }
+]

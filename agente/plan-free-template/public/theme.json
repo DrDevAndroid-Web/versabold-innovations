@@ -1,0 +1,10 @@
+{
+  "primary_color": "#1a5c2a",
+  "secondary_color": "#4caf50",
+  "accent_color": "#ff6f00",
+  "background_color": "#f9fafb",
+  "text_color": "#111827",
+  "font_style": "modern",
+  "button_style": "rounded",
+  "layout_style": "default"
+}
