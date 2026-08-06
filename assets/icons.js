@@ -28,13 +28,7 @@ window.ICONS = {
    ============================================================ */
 window.icon = function(name, size = 24, cls = '') {
   const svg = window.ICONS[name];
-  if (!svg) {
-    console.warn(`Icon not found: ${name}`);
-    return '';
-  }
-  // Replace first <svg with injected attributes
-  return svg.replace(
-    /<svg/,
-    `<svg width="${size}" height="${size}" class="icon ${cls}".replace(/\s+/g, ' ').trim()`
-  );
+  if (!svg) { console.warn(`Icon not found: ${name}`); return ''; }
+  const classes = ('icon ' + cls).trim().replace(/\s+/g, ' ');
+  return svg.replace('<svg', `<svg width="${size}" height="${size}" class="${classes}"`);
 };

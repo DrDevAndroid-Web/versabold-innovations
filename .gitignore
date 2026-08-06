@@ -13,3 +13,6 @@ build/
 .cache/
 .vercel/
 *.pem
+
+.vercel
+.env*

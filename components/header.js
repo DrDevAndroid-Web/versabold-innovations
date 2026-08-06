@@ -1,99 +1,81 @@
 /* ============================================================
-   HEADER COMPONENT — VersaBold WEB PRINCIPAL
+   HEADER — VersaBold Innovations
+   Mobile nav: <details>/<summary> nativo (sin JS extra)
+   Sticky con sombra en scroll
    ============================================================ */
 
 (function renderHeader() {
   const d = window.SITE_DATA;
-  const ic = window.icon;
 
-  const headerHTML = `
-    <header id="site-header" class="site-header">
+  // Detect subdirectory by finding the main stylesheet link (style.css)
+  const styleLink = document.querySelector('link[href*="style.css"]');
+  const inSubdir = styleLink && styleLink.getAttribute('href').startsWith('../');
+  const base = inSubdir ? '../' : '';
+
+  const desktopLinks = d.nav.links
+    .map(l => `<a href="${base}index.html${l.href}" class="nav-link">${l.label}</a>`)
+    .join('');
+
+  const mobileLinks = [
+    ...d.nav.links.map(l => ({ ...l, href: `${base}index.html${l.href}` })),
+    { href: '#', label: '─────────', disabled: true },
+    ...d.nav.pillar_links.map(l => ({ ...l, href: `${base}${l.href}` })),
+  ]
+    .map(l => l.disabled
+      ? `<span style="color:rgba(0,0,0,.18);font-size:.6rem;letter-spacing:.12em;padding:.4rem 1rem;display:block">SOLUCIONES</span>`
+      : `<a href="${l.href}">${l.label}</a>`)
+    .join('');
+
+  const html = `
+    <header class="site-header" id="site-header">
       <div class="container">
         <div class="header-inner">
-          <a href="#" class="brand-logo" aria-label="VersaBold Innovations">
-            <img src="assets/favicon.ico" alt="VersaBold logo" width="40" height="40">
-            <div class="brand-name">
-              <div class="brand-bold">VersaBold</div>
-              <div class="brand-sub">Innovations</div>
-            </div>
+
+          <a href="${base}index.html" class="brand" aria-label="VersaBold Innovations — Inicio">
+            <img src="${base}assets/images/logo.png" alt="" width="40" height="40">
+            <span class="brand-copy">
+              <b>VersaBold</b>
+              <small>Innovations</small>
+            </span>
           </a>
 
-          <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
-            <ul class="nav-list">
-              ${d.nav.links.map(link => `
-                <li>
-                  <a href="${link.href}" class="nav-link">${link.label}</a>
-                </li>
-              `).join('')}
-            </ul>
+          <nav class="desktop-nav" aria-label="Navegación principal">
+            ${desktopLinks}
           </nav>
 
-          <a href="${d.brand.whatsapp}" class="btn btn-primary btn-sm btn-header" target="_blank" rel="noopener noreferrer">
-            📞 Contacto
+          <a href="${d.brand.whatsapp}" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
+            Iniciar proyecto ↗
           </a>
 
-          <button
-            id="nav-toggle"
-            class="nav-toggle"
-            aria-controls="main-nav"
-            aria-label="Abrir menú de navegación"
-            aria-expanded="false"
-          >
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-          </button>
+          <details class="mobile-nav">
+            <summary aria-label="Abrir menú">
+              <span></span>
+              <span></span>
+              <span></span>
+            </summary>
+            <div class="mobile-panel">
+              ${mobileLinks}
+            </div>
+          </details>
+
         </div>
       </div>
     </header>
   `;
 
   const root = document.getElementById('header-root');
-  if (root) root.innerHTML = headerHTML;
+  if (root) root.innerHTML = html;
 
-  // Mobile menu toggle
-  const toggle = document.getElementById('nav-toggle');
-  const nav = document.getElementById('main-nav');
-
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !isOpen);
-      toggle.classList.toggle('is-open');
-      nav.classList.toggle('nav-open');
-      document.body.style.overflow = isOpen ? 'auto' : 'hidden';
-    });
-
-    // Close nav when link clicked
-    nav.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.classList.remove('is-open');
-        nav.classList.remove('nav-open');
-        document.body.style.overflow = 'auto';
-      });
-    });
-  }
-
-  // Sticky header shadow on scroll
+  // Sticky shadow on scroll
   window.addEventListener('scroll', () => {
-    const header = document.getElementById('site-header');
-    if (header) {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    }
-  });
+    const h = document.getElementById('site-header');
+    if (h) h.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
 
-  // Mobile menu show/hide on resize
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && nav) {
-      nav.classList.remove('nav-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.classList.remove('is-open');
-      document.body.style.overflow = 'auto';
-    }
+  // Close mobile panel when a link is clicked
+  document.addEventListener('click', e => {
+    const panel = document.querySelector('.mobile-nav');
+    if (!panel) return;
+    if (e.target.matches('.mobile-panel a')) panel.removeAttribute('open');
   });
 })();

@@ -1,57 +1,33 @@
 /* ============================================================
-   ANIMATIONS — Scroll-triggered fade-in animations (manual AOS-lite)
+   ANIMATIONS — VersaBold Innovations
+   IntersectionObserver reveal pattern
    ============================================================ */
 
-(function setupAnimations() {
-  'use strict';
+window.setupReveal = function setupReveal() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Respect prefers-reduced-motion
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (prefersReducedMotion) {
-    // If reduced motion, make all elements visible immediately
-    document.querySelectorAll('[data-aos]').forEach(el => {
-      el.classList.add('aos-visible');
-    });
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
     return;
   }
 
-  // IntersectionObserver for scroll-triggered animations
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -50px 0px',
-    threshold: 0.1,
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('aos-visible');
-        // Unobserve after animation
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Observe all animated elements
-  document.querySelectorAll('[data-aos]').forEach(el => {
-    observer.observe(el);
-  });
-
-  // Store setup function globally for content-renderer.js
-  window.setupAOS = function() {
-    document.querySelectorAll('[data-aos]:not(.aos-visible)').forEach(el => {
-      observer.observe(el);
-    });
-  };
-
-  // Re-check reduced motion preference if it changes
-  window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
-    if (e.matches) {
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.classList.add('aos-visible');
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
       });
-      observer.disconnect();
-    }
-  });
-})();
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', window.setupReveal);
+} else {
+  window.setupReveal();
+}

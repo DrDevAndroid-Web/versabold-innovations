@@ -1,353 +1,300 @@
 /* ============================================================
-   SITE DATA — Content & Configuration for VersaBold WEB PRINCIPAL
+   SITE DATA — VersaBold Innovations
+   Edita aquí para cambiar cualquier texto, imagen o precio.
    ============================================================ */
 
 window.SITE_DATA = {
+
   brand: {
-    name: 'VersaBold Innovations',
-    tagline: 'Soluciones digitales para el crecimiento de tu negocio',
-    phone: '+53 56189395',
-    email: 'vesaboldinnovations@gmail.com',
+    name:     'VersaBold Innovations',
+    tagline:  'Soluciones digitales para el crecimiento de tu negocio',
+    phone:    '+53 56189395',
+    email:    'vesaboldinnovations@gmail.com',
     location: 'Guantánamo, Cuba',
-    whatsapp: 'https://wa.me/5356189395',
+    whatsapp: 'https://wa.me/5356189395?text=Hola%20VersaBold%2C%20me%20gustar%C3%ADa%20iniciar%20un%20proyecto',
     facebook: 'https://www.facebook.com/versabold',
   },
 
   nav: {
     links: [
-      { href: '#servicios', label: 'Soluciones' },
-      { href: '#proceso', label: 'Cómo trabajamos' },
-      { href: '#proyectos', label: 'Proyectos' },
-      { href: '#faq', label: 'Preguntas' },
+      { href: '#soluciones',  label: 'Soluciones' },
+      { href: '#proceso',     label: 'Cómo trabajamos' },
+      { href: '#faq',         label: 'Preguntas' },
+      { href: '#contacto',    label: 'Contacto' },
+    ],
+    pillar_links: [
+      { href: 'desarrollo-web/',         label: 'Páginas Web' },
+      { href: 'control-inventario/',     label: 'Gestión de Negocio' },
+      { href: 'apps-android/',           label: 'Apps Android' },
+      { href: 'gestion-redes-sociales/', label: 'Redes Sociales' },
+      { href: 'notificaciones-sms/',     label: 'Notificaciones SMS' },
     ],
   },
 
-  /* ============================================================
-     HERO SECTION
-     ============================================================ */
+  /* ── HERO ──────────────────────────────────────────────── */
   hero: {
-    h1: 'Todo lo que tu negocio necesita para <em>crecer</em>, en un solo lugar.',
-    intro: 'Creamos soluciones digitales y productos personalizados para ayudarte a vender más, optimizar tus procesos y ofrecer una mejor experiencia a tus clientes.',
+    eyebrow: 'Web · Software · Sistemas · Crecimiento',
+    h1: 'Convertimos ideas en <em>soluciones digitales</em> que hacen crecer negocios.',
+    lead: 'Diseñamos herramientas a medida para que tu negocio proyecte confianza, controle mejor su información y esté preparado para crecer.',
     cta_primary: {
-      text: '📞 Agenda una llamada sin compromiso',
-      href: 'https://wa.me/5356189395?text=Hola%20VersaBold%2C%20me%20gustaría%20agendar%20una%20llamada%20sin%20compromiso',
-      class: 'btn btn-primary btn-lg',
+      text: 'Iniciar proyecto',
+      href: 'https://wa.me/5356189395?text=Hola%20VersaBold%2C%20me%20gustar%C3%ADa%20iniciar%20un%20proyecto',
     },
-    cta_secondary: {
-      text: 'Conoce nuestras soluciones',
-      href: '#servicios',
-      class: 'btn btn-outline btn-lg',
-    },
-    trust_items: [
-      'Soluciones a medida',
-      'Atención personalizada',
-      'Diseñado para pequeños y medianos negocios',
+    cta_secondary: { text: 'Ver soluciones', href: '#soluciones' },
+    proof: [
+      { num: '01', label: 'Versatilidad' },
+      { num: '02', label: 'Audacia' },
+      { num: '03', label: 'Innovación' },
     ],
-    image: {
-      src: 'assets/images/hero-main.webp',
-      alt: 'Equipo de VersaBold Innovations trabajando en proyectos digitales',
-      width: 1200,
-      height: 800,
-    },
+    tags: ['DIGITAL PRODUCTS', 'SMART SYSTEMS', 'WEB / ANDROID'],
   },
 
-  /* ============================================================
-     PROBLEMA SECTION
-     ============================================================ */
-  problema: {
-    label: 'Tu desafío',
-    h2: 'Tu negocio puede estar perdiendo oportunidades sin darte cuenta.',
-    intro: 'Muchos negocios tienen buenos productos, pero enfrentan problemas que frenan su crecimiento:',
-    cards: [
-      {
-        title: 'Dependes solo de redes sociales',
-        text: 'Tus clientes no siempre encuentran tu negocio cuando buscan soluciones.',
-        image: 'assets/images/problem-redes-sociales.webp',
-        alt: 'Problema: Dependencia de redes sociales',
-        titleAttr: 'Dependencia de redes sociales para tu negocio',
-      },
-      {
-        title: 'No tienes control completo de tu operación',
-        text: 'Ventas, inventario y pedidos pueden convertirse en un caos.',
-        image: 'assets/images/problem-control-operacion.webp',
-        alt: 'Problema: Falta de control operacional',
-        titleAttr: 'Falta de control en tu operación',
-      },
-      {
-        title: 'Pierdes tiempo haciendo tareas manuales',
-        text: 'Procesos repetitivos que podrían estar automatizados.',
-        image: 'assets/images/problem-tareas-manuales.webp',
-        alt: 'Problema: Tareas manuales repetitivas',
-        titleAttr: 'Tareas manuales que consumen tiempo',
-      },
-      {
-        title: 'Tus clientes esperan una experiencia más profesional',
-        text: 'La forma en que presentas tu negocio influye en la decisión de compra.',
-        image: 'assets/images/problem-experiencia-cliente.webp',
-        alt: 'Problema: Falta de profesionalismo',
-        titleAttr: 'Presentación poco profesional de tu negocio',
-      },
-    ],
+  /* ── VALUE STRIP ───────────────────────────────────────── */
+  value_strip: {
+    words: ['VERSATILE', 'BOLD', 'INNOVATIVE'],
+    sub: 'Tecnología que se adapta. Soluciones que hacen crecer.',
   },
 
-  /* ============================================================
-     LEAD MAGNET — WHATSAPP GROUP
-     ============================================================ */
-  propuesta: {
-    type: 'whatsapp-magnet',
-    h2: 'Obtén una plantilla de Excel gratuita',
-    intro: 'Únete a nuestro grupo de WhatsApp',
-    subintro: 'Luego lo de unirse al grupo de WA para obtenerla',
-    whatsappUrl: 'https://chat.whatsapp.com/KmUw449Z8r96coa1TIn78J',
-    buttonText: 'Unirse al grupo de WhatsApp',
-    disclaimer: 'La unión al grupo requiere autorización previa del administrador del mismo.',
-  },
-
-  /* ============================================================
-     SERVICIOS / BENTO GRID SECTION
-     ============================================================ */
+  /* ── SERVICIOS / PILLAR CARDS ──────────────────────────── */
   servicios: {
-    label: 'Nuestras soluciones',
-    h2: 'Soluciones diseñadas para impulsar tu crecimiento',
+    eyebrow: 'Soluciones',
+    h2: 'Cada necesidad tiene <em>su propia solución.</em>',
+    sub: 'Elige el área que quieres mejorar. Cada servicio cuenta con su propia página, alcance y punto de partida.',
     items: [
       {
-        image: 'assets/images/service-paginas-web.webp',
-        title: '🌐 Páginas Web Profesionales',
-        desc: 'Tu negocio disponible 24/7 con una presencia digital que genera confianza.',
-        span: 'col-span-1',
+        n: '01', featured: true,
+        title: 'Páginas Web Profesionales',
+        image: 'assets/images/servicio-web.webp',
+        desc: 'Tu negocio disponible 24/7. Desde una landing hasta un sitio completo con panel propio y dominio.',
+        tags: ['Web', 'Hosting', 'Panel', 'SEO'],
+        href: 'desarrollo-web/',
       },
       {
-        image: 'assets/images/service-tienda-virtual.webp',
-        title: '🛒 Tiendas Virtuales',
-        desc: 'Permite que tus clientes compren fácilmente desde cualquier lugar.',
-        span: 'col-span-1',
+        n: '02',
+        title: 'Gestión de Negocio',
+        image: 'assets/images/servicio-gestion.webp',
+        desc: 'Controla inventario, ventas, empleados y almacén. Desde un módulo básico hasta un sistema completo.',
+        tags: ['Inventario', 'Stock', 'Reportes', 'Usuarios'],
+        href: 'control-inventario/',
       },
       {
-        image: 'assets/images/service-apps-moviles.webp',
-        title: '📱 Aplicaciones Móviles',
-        desc: 'Conecta tu negocio con tus clientes directamente desde sus teléfonos.',
-        span: 'col-span-1',
+        n: '03',
+        title: 'Aplicaciones Android',
+        image: 'assets/images/servicio-android.webp',
+        desc: 'Una app creada para tu forma de trabajar. Funciona offline, se instala directo, sin Play Store.',
+        tags: ['Android', 'Offline', 'A medida', 'GPS'],
+        href: 'apps-android/',
       },
       {
-        image: 'assets/images/service-sistemas-gestion.webp',
-        title: '📦 Sistemas de Gestión e Inventario',
-        desc: 'Controla productos, ventas y operaciones desde un solo lugar.',
-        span: 'col-span-1',
+        n: '04',
+        title: 'Gestión de Redes Sociales',
+        image: 'assets/images/servicio-redes.webp',
+        desc: 'Presencia constante en Facebook e Instagram sin que tengas que pensar qué publicar ni cuándo.',
+        tags: ['Facebook', 'Instagram', 'Contenido', 'WhatsApp'],
+        href: 'gestion-redes-sociales/',
       },
       {
-        image: 'assets/images/service-landing-pages.webp',
-        title: '🎯 Landing Pages',
-        desc: 'Convierte visitantes en clientes con páginas diseñadas para vender.',
-        span: 'col-span-1',
-      },
-      {
-        image: 'assets/images/service-impresion.webp',
-        title: '🖨️ Impresión Creativa y Personalización',
-        desc: 'Haz destacar tu marca con productos personalizados.',
-        span: 'col-span-1',
+        n: '05',
+        title: 'Notificaciones SMS',
+        image: 'assets/images/servicio-sms.webp',
+        desc: 'Envía confirmaciones de pedido y campañas directamente al teléfono de tus clientes. Sin apps.',
+        tags: ['SMS', 'Pedidos', 'Campañas', 'Automatización'],
+        href: 'notificaciones-sms/',
       },
     ],
   },
 
-  /* ============================================================
-     PROCESO SECTION
-     ============================================================ */
+  /* ── MANIFESTO ─────────────────────────────────────────── */
+  manifesto: {
+    eyebrow: 'Por qué VersaBold',
+    image: 'assets/images/versabold-equipo.webp',
+    h2: 'No adaptamos tu negocio al software. <em>Adaptamos la tecnología a tu negocio.</em>',
+    body: 'VersaBold nace de tres ideas: la versatilidad para entender realidades distintas, la audacia para construir mejor y la innovación para convertir tecnología en crecimiento.',
+    values: [
+      { letter: 'V', name: 'Versatile',   desc: 'Nos adaptamos' },
+      { letter: 'B', name: 'Bold',         desc: 'Rompemos límites' },
+      { letter: '+', name: 'Innovative',   desc: 'Evolucionamos' },
+    ],
+  },
+
+  /* ── PROCESO ───────────────────────────────────────────── */
   proceso: {
-    label: 'Nuestro método',
-    h2: 'Un proceso claro, sin complicaciones',
+    eyebrow: 'Cómo trabajamos',
+    h2: 'De una necesidad a una <em>solución real.</em>',
     steps: [
-      {
-        number: '01',
-        title: 'Analizamos tu necesidad',
-        text: 'Entendemos tu negocio antes de recomendar una solución. Sin plantillas, sin suposiciones.',
-        image: 'assets/images/service-paginas-web.webp',
-        alt: 'Paso 1: Análisis de necesidades',
-      },
-      {
-        number: '02',
-        title: 'Diseñamos la propuesta',
-        text: 'Creamos una solución adaptada a tus objetivos reales, no a los de otro negocio.',
-        image: 'assets/images/service-tienda-virtual.webp',
-        alt: 'Paso 2: Diseño de propuesta',
-      },
-      {
-        number: '03',
-        title: 'Desarrollamos y ajustamos',
-        text: 'Trabajamos contigo en cada iteración hasta lograr exactamente el resultado esperado.',
-        image: 'assets/images/service-apps-moviles.webp',
-        alt: 'Paso 3: Desarrollo y ajustes',
-      },
-      {
-        number: '04',
-        title: 'Te acompañamos después del lanzamiento',
-        text: 'No desaparecemos cuando entregamos el proyecto. Estamos cuando nos necesitas.',
-        image: 'assets/images/service-sistemas-gestion.webp',
-        alt: 'Paso 4: Acompañamiento post-lanzamiento',
-      },
+      { n: '01', title: 'Descubrimos',   text: 'Entendemos el problema, el negocio y el objetivo.',      image: 'assets/images/proceso-01.webp' },
+      { n: '02', title: 'Diseñamos',     text: 'Definimos la experiencia y la solución adecuada.',        image: 'assets/images/proceso-02.webp' },
+      { n: '03', title: 'Construimos',   text: 'Desarrollamos, probamos y optimizamos.',                  image: 'assets/images/proceso-03.webp' },
+      { n: '04', title: 'Lanzamos',      text: 'Publicamos y dejamos todo listo para operar.',            image: 'assets/images/proceso-04.webp' },
+      { n: '05', title: 'Evolucionamos', text: 'Medimos, mantenemos y escalamos contigo.',                image: 'assets/images/proceso-05.webp' },
     ],
   },
 
-  /* ============================================================
-     DIFERENCIACION SECTION
-     ============================================================ */
-  diferenciacion: {
-    label: 'Por qué elegirnos',
-    h2: 'No vendemos tecnología. Creamos soluciones que funcionan para tu negocio.',
-    comparison: [
-      {
-        problem: 'Plantillas genéricas',
-        solution: 'Desarrollo personalizado',
-      },
-      {
-        problem: 'Muchas herramientas separadas',
-        solution: 'Soluciones integradas',
-      },
-      {
-        problem: 'Lenguaje técnico',
-        solution: 'Explicaciones claras',
-      },
-      {
-        problem: 'Entrega y desaparecen',
-        solution: 'Acompañamiento continuo',
-      },
-      {
-        problem: 'Diseñado para grandes empresas',
-        solution: 'Adaptado a negocios reales',
-      },
-    ],
-  },
-
-  /* ============================================================
-     PROYECTOS / CASE STUDIES SECTION
-     ============================================================ */
-  proyectos: {
-    label: 'Resultados reales',
-    h2: 'Soluciones creadas para negocios reales',
-    items: [
-      {
-        title: 'Sistema de inventario',
-        image: 'assets/images/proyecto-inventario.webp',
-        before: 'Pérdida de control',
-        after: 'Operación organizada',
-      },
-      {
-        title: 'Tienda online',
-        image: 'assets/images/proyecto-tienda.webp',
-        before: 'Solo ventas físicas',
-        after: 'Nuevos canales de venta',
-      },
-      {
-        title: 'Marca personalizada',
-        image: 'assets/images/proyecto-marca.webp',
-        before: 'Imagen poco profesional',
-        after: 'Mayor presencia comercial',
-      },
-    ],
-  },
-
-  /* ============================================================
-     TESTIMONIOS SECTION
-     ============================================================ */
+  /* ── TESTIMONIOS ───────────────────────────────────────── */
   testimonios: {
-    label: 'Lo que dicen nuestros clientes',
-    h2: 'Empresarios que decidieron crecer',
+    eyebrow: 'Lo que dicen nuestros clientes',
+    h2: 'Empresarios que <em>decidieron crecer.</em>',
     items: [
       {
-        name: 'María González',
-        role: 'Propietaria de tienda de ropa',
-        business: 'González Fashion Store',
-        problem: 'Solo vendía presencialmente y no llegaba a más clientes',
-        solution: 'Tienda virtual + Landing page',
-        result: '3x aumento en ventas en 6 meses',
-        image: 'assets/images/testimonial-1.webp',
+        name: 'René Cobas',
+        role: 'CEO',
+        business: 'Byloz — Sistema Operativo de la Construcción',
+        problem: 'Necesitaba una plataforma digital sólida para posicionar su sistema en el mercado.',
+        solution: 'Desarrollo web + Sistema de gestión',
+        result: 'Plataforma operativa y presencia profesional en internet',
+        image: 'assets/images/testimonial-rene.webp',
+        logo: 'assets/images/logo-byloz.webp',
         rating: 5,
       },
       {
-        name: 'Carlos Mendoza',
-        role: 'Gerente de operaciones',
-        business: 'Distribuidora de alimentos',
-        problem: 'Caos en inventario y pedidos manuales',
-        solution: 'Sistema de gestión integrado',
-        result: '80% menos tiempo en tareas administrativas',
-        image: 'assets/images/testimonial-2.webp',
+        name: 'Darma Alcántara de la Cruz',
+        role: 'Emprendedora',
+        business: 'Negocio digital',
+        problem: 'No tenía presencia en internet ni forma de que los clientes la encontraran.',
+        solution: 'Página web profesional',
+        result: 'Clientes nuevos llegando por internet desde el primer mes',
+        image: 'assets/images/testimonial-darma.webp',
         rating: 5,
       },
       {
-        name: 'Laura Rodríguez',
-        role: 'Dueña de boutique',
-        business: 'La Bella Boutique',
-        problem: 'Imagen poco profesional en redes',
-        solution: 'Rediseño web + Branding',
-        result: '45% más consultas de clientes nuevos',
-        image: 'assets/images/testimonial-3.webp',
+        name: 'Dairis Domínguez',
+        role: 'Dueña',
+        business: 'LalyRos',
+        problem: 'Manejaba todo a mano y perdía ventas por desorden.',
+        solution: 'Sistema de gestión de inventario',
+        result: 'Control total de productos y ventas sin papeles',
+        image: 'assets/images/testimonial-dairis.webp',
         rating: 5,
       },
     ],
   },
 
-  /* ============================================================
-     FAQ SECTION
-     ============================================================ */
+  /* ── LEAD MAGNET ───────────────────────────────────────── */
+  lead_magnet: {
+    badge: '🎁 Gratis para ti',
+    h2: 'Descarga gratis la plantilla para controlar tu inventario',
+    body: 'Déjanos tu nombre y correo y te enviamos la plantilla lista para usar, más el acceso a nuestro grupo de WhatsApp con recursos para tu negocio.',
+    cta_text: 'Quiero mi plantilla',
+    form_url: '#',
+    whatsapp_url: 'https://chat.whatsapp.com/KmUw449Z8r96coa1TIn78J',
+    disclaimer: 'Sin spam. Solo recursos útiles para tu negocio.',
+    visual_emoji: '📊',
+  },
+
+  /* ── PLANES SMS ────────────────────────────────────────── */
+  sms: {
+    eyebrow: 'Notificaciones SMS',
+    h2: 'Llega al teléfono de tus clientes <em>al instante.</em>',
+    sub: 'Envía confirmaciones de pedido, avisos de entrega y campañas promocionales directamente por SMS. Sin apps, sin internet — solo mensajes que se leen.',
+    plans: [
+      {
+        label: 'Bolsa Básica',
+        count: '100',
+        price: '1 000',
+        unit: 'CUP',
+        ideal: 'Ideal para negocios pequeños que envían avisos puntuales de pedidos a pocos clientes.',
+        features: [
+          'Confirmaciones de pedido automáticas',
+          'Avisos de entrega y recogida',
+          'Notificaciones personalizadas',
+          'Panel de seguimiento de envíos',
+        ],
+        cta: 'Contratar',
+        featured: false,
+      },
+      {
+        label: 'Bolsa Estándar',
+        count: '500',
+        price: '4 500',
+        unit: 'CUP',
+        ideal: 'Para negocios con flujo constante de ventas que confirman pedidos automáticamente.',
+        features: [
+          'Todo lo de Básica',
+          'Campañas a múltiples clientes',
+          'Programación de mensajes',
+          'Reportes de entrega',
+        ],
+        cta: 'Contratar',
+        featured: true,
+        badge: 'Más popular',
+      },
+      {
+        label: 'Bolsa Avanzada',
+        count: '1 000',
+        price: '8 000',
+        unit: 'CUP',
+        ideal: 'Para negocios de alta rotación (comida, entregas) con campañas masivas frecuentes.',
+        features: [
+          'Todo lo de Estándar',
+          'Campañas masivas ilimitadas',
+          'Integración con sistema de pedidos',
+          'Soporte prioritario',
+        ],
+        cta: 'Contratar',
+        featured: false,
+      },
+    ],
+    cta_href: 'https://wa.me/5356189395?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20SMS%20para%20mi%20negocio',
+    note: 'Los SMS llegan a toda la red nacional. Vigencia 180 días desde la activación.',
+  },
+
+  /* ── FAQ ────────────────────────────────────────────────── */
   faq: {
-    h2: 'Preguntas frecuentes',
+    eyebrow: 'Preguntas frecuentes',
+    h2: 'Antes de <em>empezar.</em>',
     items: [
       {
         q: '¿Solo trabajan con empresas grandes?',
-        a: 'No. Creamos soluciones adaptadas especialmente para pequeños y medianos negocios. De hecho, nos especializamos en ayudar a empresas como la tuya a crecer sin complejidades innecesarias.',
+        a: 'No. Nos especializamos en pequeños y medianos negocios. De hecho, es donde mejor podemos ayudar: soluciones con impacto real sin complejidades innecesarias.',
       },
       {
         q: '¿Necesito saber de tecnología?',
-        a: 'No. Nosotros nos encargamos de toda la parte técnica y te explicamos todo de forma sencilla. No usamos jerga innecesaria.',
+        a: 'No. Nos encargamos de todo lo técnico y te explicamos cada decisión en lenguaje sencillo. Sin jerga, sin sorpresas.',
       },
       {
-        q: '¿Pueden crear algo personalizado?',
-        a: 'Sí, totalmente. Cada negocio tiene necesidades diferentes. No ofrecemos soluciones estándar de catálogo. Todo se diseña pensando en tu caso específico.',
+        q: '¿Pueden crear algo totalmente personalizado?',
+        a: 'Sí, siempre. No vendemos plantillas de catálogo. Cada solución se diseña entendiendo tu negocio, tus procesos y tus objetivos.',
       },
       {
-        q: '¿Después de entregar el proyecto tengo soporte?',
-        a: 'Sí. Ofrecemos acompañamiento continuo según el tipo de solución. No nos vamos cuando entregamos, sino que te acompañamos en todo el proceso.',
+        q: '¿Tienen soporte después de entregar el proyecto?',
+        a: 'Sí. Ofrecemos acompañamiento continuo según el tipo de solución. No desaparecemos una vez entregado el proyecto.',
       },
       {
-        q: '¿Cuánto tiempo toma un proyecto?',
-        a: 'Depende del alcance. Desde una landing page (2-3 semanas) hasta un sistema completo (2-3 meses). En la primera consulta definimos el cronograma exacto.',
+        q: '¿Cuánto tarda un proyecto?',
+        a: 'Depende del alcance. Una landing page puede estar lista en 2-3 semanas. Un sistema completo puede tomar 2-3 meses. En la primera consulta definimos el cronograma exacto.',
       },
       {
         q: '¿Cuál es el precio?',
-        a: 'No tenemos precios fijos. Todo depende de la complejidad de tu solución. Agendemos una llamada para analizar tu caso y darte un presupuesto personalizado.',
+        a: 'No hay precios fijos porque cada proyecto es distinto. Agendemos una conversación sin compromiso y preparamos un presupuesto claro para tu caso.',
+      },
+      {
+        q: '¿Cómo funciona el servicio de SMS?',
+        a: 'Compramos bolsas de SMS en zdSMS y te las ofrecemos como servicio llave en mano. Tú nos dices qué mensajes enviar y cuándo, nosotros lo ejecutamos y te damos seguimiento.',
       },
     ],
   },
 
-  /* ============================================================
-     CTA FINAL SECTION
-     ============================================================ */
+  /* ── CTA FINAL ─────────────────────────────────────────── */
   cta_final: {
-    h2: 'Tu negocio tiene potencial. Nosotros ayudamos a desarrollarlo.',
-    intro: 'Cuéntanos qué necesitas y descubramos juntos cuál es la mejor solución para crecer.',
-    cta: {
-      text: '📞 Agenda una llamada sin compromiso',
-      href: 'https://wa.me/5356189395?text=Hola%20VersaBold%2C%20me%20gustaría%20agendar%20una%20llamada%20sin%20compromiso',
-      class: 'btn btn-primary btn-lg',
-    },
-    bgImage: 'assets/images/cta-bg.webp',
+    eyebrow: 'Hablemos',
+    h2: 'Tu negocio tiene potencial. <em>Construyámoslo juntos.</em>',
+    body: 'Cuéntanos qué necesitas y encontraremos la solución adecuada para tu caso.',
+    cta_text: 'Iniciar proyecto',
+    cta_href: 'https://wa.me/5356189395?text=Hola%20VersaBold%2C%20me%20gustar%C3%ADa%20iniciar%20un%20proyecto',
   },
 
-  /* ============================================================
-     FOOTER
-     ============================================================ */
+  /* ── FOOTER ─────────────────────────────────────────────── */
   footer: {
     servicios: [
-      { text: 'Desarrollo web', href: '#servicios' },
-      { text: 'Tiendas virtuales', href: '#servicios' },
-      { text: 'Apps móviles', href: '#servicios' },
-      { text: 'Sistemas empresariales', href: '#servicios' },
-      { text: 'Landing pages', href: '#servicios' },
-      { text: 'Impresión personalizada', href: '#servicios' },
+      { text: 'Páginas Web',        href: 'desarrollo-web/' },
+      { text: 'Gestión de Negocio', href: 'control-inventario/' },
+      { text: 'Apps Android',       href: 'apps-android/' },
+      { text: 'Redes Sociales',     href: 'gestion-redes-sociales/' },
+      { text: 'Notificaciones SMS', href: 'notificaciones-sms/' },
     ],
     empresa: [
-      { text: 'Nosotros', href: '#propuesta' },
-      { text: 'Proyectos', href: '#proyectos' },
-      { text: 'Testimonios', href: '#testimonios' },
+      { text: 'Inicio',   href: '#inicio' },
+      { text: 'Nosotros', href: '#nosotros' },
       { text: 'Contacto', href: '#contacto' },
     ],
     legal: [
