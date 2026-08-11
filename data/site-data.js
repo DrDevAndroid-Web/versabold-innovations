@@ -9,7 +9,7 @@ window.SITE_DATA = {
     name:     'VersaBold Innovations',
     tagline:  'Soluciones digitales para el crecimiento de tu negocio',
     phone:    '+53 56189395',
-    email:    'vesaboldinnovations@gmail.com',
+    email:    'soporte@versabold.com',
     location: 'Guantánamo, Cuba',
     whatsapp: 'https://wa.me/5356189395?text=Hola%20VersaBold%2C%20me%20gustar%C3%ADa%20iniciar%20un%20proyecto',
     facebook: 'https://www.facebook.com/versabold',
@@ -21,6 +21,7 @@ window.SITE_DATA = {
       { href: '#proceso',     label: 'Cómo trabajamos' },
       { href: '#faq',         label: 'Preguntas' },
       { href: '#contacto',    label: 'Contacto' },
+      { href: 'blog/',        label: 'Blog' },
     ],
     pillar_links: [
       { href: 'desarrollo-web/',         label: 'Páginas Web' },

@@ -12,12 +12,15 @@
   const inSubdir = styleLink && styleLink.getAttribute('href').startsWith('../');
   const base = inSubdir ? '../' : '';
 
+  const resolveNavHref = (href) =>
+    href.startsWith('#') ? `${base}index.html${href}` : `${base}${href}`;
+
   const desktopLinks = d.nav.links
-    .map(l => `<a href="${base}index.html${l.href}" class="nav-link">${l.label}</a>`)
+    .map(l => `<a href="${resolveNavHref(l.href)}" class="nav-link">${l.label}</a>`)
     .join('');
 
   const mobileLinks = [
-    ...d.nav.links.map(l => ({ ...l, href: `${base}index.html${l.href}` })),
+    ...d.nav.links.map(l => ({ ...l, href: resolveNavHref(l.href) })),
     { href: '#', label: '─────────', disabled: true },
     ...d.nav.pillar_links.map(l => ({ ...l, href: `${base}${l.href}` })),
   ]

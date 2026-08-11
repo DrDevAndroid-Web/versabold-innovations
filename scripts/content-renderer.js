@@ -224,26 +224,75 @@
     if (!el) return;
     const lm = d.lead_magnet;
 
+    const guideSlides = [
+      { src: 'assets/images/guia-manual-inicio.webp',  alt: 'Manual de inicio — Control Básico de Inventario' },
+      { src: 'assets/images/guia-paso-1.webp',         alt: 'Paso 1 · Registra tus productos' },
+      { src: 'assets/images/guia-paso-2.webp',         alt: 'Paso 2 · Registra los movimientos' },
+      { src: 'assets/images/guia-paso-3.webp',         alt: 'Paso 3 · Revisa el resumen' },
+      { src: 'assets/images/guia-paso-4.webp',         alt: 'Paso 4 · Interpreta las alertas' },
+      { src: 'assets/images/guia-paso-5.webp',         alt: 'Paso 5 · Prepara el reabastecimiento' },
+    ];
+
     el.innerHTML = `
       <section class="lead-magnet-section" id="lead-magnet">
         <div class="container">
-          <div class="lead-magnet-inner">
-            <div class="reveal">
-              <div class="lead-magnet-badge">${lm.badge}</div>
-              <h2>${lm.h2}</h2>
-              <p>${lm.body}</p>
-              <a href="${lm.form_url}" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
-                ${lm.cta_text} ↗
-              </a>
-              <p class="lead-magnet-disclaimer">${lm.disclaimer}</p>
+
+          <!-- Copy centrado a todo lo ancho -->
+          <div class="lm-copy reveal">
+            <div class="lead-magnet-badge">${lm.badge}</div>
+            <h2>${lm.h2}</h2>
+            <p>${lm.body}</p>
+            <a href="https://sea-pod-crm-frontend.vercel.app/f/plantilla-excel-versabold" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+              ${lm.cta_text} ↗
+            </a>
+            <p class="lead-magnet-disclaimer">${lm.disclaimer}</p>
+          </div>
+
+          <!-- Slider de guía de uso -->
+          <div class="lm-slider-wrap reveal">
+            <div class="lm-slider" id="lm-slider">
+              ${guideSlides.map((s, i) => `
+                <div class="lm-slide ${i === 0 ? 'active' : ''}" aria-hidden="${i !== 0}">
+                  <img src="${s.src}" alt="${s.alt}" loading="lazy">
+                </div>
+              `).join('')}
             </div>
-            <div class="lead-magnet-visual reveal" aria-hidden="true">
-              ${lm.visual_emoji}
+            <div class="lm-slider-controls">
+              <button class="lm-arrow" id="lm-prev" aria-label="Anterior">&#8592;</button>
+              <div class="lm-dots">
+                ${guideSlides.map((_, i) => `<button class="lm-dot ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Slide ${i + 1}"></button>`).join('')}
+              </div>
+              <button class="lm-arrow" id="lm-next" aria-label="Siguiente">&#8594;</button>
             </div>
           </div>
+
         </div>
       </section>
     `;
+
+    // Slider logic
+    const slides = el.querySelectorAll('.lm-slide');
+    const dots   = el.querySelectorAll('.lm-dot');
+    let current  = 0;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      slides[current].setAttribute('aria-hidden', 'true');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      slides[current].setAttribute('aria-hidden', 'false');
+      dots[current].classList.add('active');
+    }
+
+    el.querySelector('#lm-prev').addEventListener('click', () => goTo(current - 1));
+    el.querySelector('#lm-next').addEventListener('click', () => goTo(current + 1));
+    dots.forEach(dot => dot.addEventListener('click', () => goTo(Number(dot.dataset.index))));
+
+    // Auto-advance cada 4s
+    let timer = setInterval(() => goTo(current + 1), 4000);
+    el.querySelector('.lm-slider-wrap').addEventListener('mouseenter', () => clearInterval(timer));
+    el.querySelector('.lm-slider-wrap').addEventListener('mouseleave', () => { timer = setInterval(() => goTo(current + 1), 4000); });
   }
 
   /* ── FAQ ────────────────────────────────────────────────── */

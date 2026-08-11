@@ -7,6 +7,15 @@
   const ic = window.icon;
   const year = new Date().getFullYear();
 
+  const styleLink = document.querySelector('link[href*="style.css"]');
+  const inSubdir = styleLink && styleLink.getAttribute('href').startsWith('../');
+  const base = inSubdir ? '../' : '';
+
+  const resolveHref = (href) =>
+    href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')
+      ? href
+      : `${base}${href}`;
+
   const html = `
     <footer class="site-footer" id="contacto">
       <div class="footer-main container">
@@ -14,7 +23,7 @@
         <!-- Marca -->
         <div class="footer-brand-block">
           <div class="footer-logo">
-            <img src="assets/favicon.ico" alt="" width="38" height="38">
+            <img src="${base}assets/images/logo.png" alt="" width="38" height="38">
             <span>
               <b>VersaBold</b>
               <small>Innovations</small>
@@ -30,7 +39,7 @@
         <div>
           <p class="footer-heading">Soluciones</p>
           <ul class="footer-links">
-            ${d.footer.servicios.map(l => `<li><a href="${l.href}" class="footer-link">${l.text}</a></li>`).join('')}
+            ${d.footer.servicios.map(l => `<li><a href="${resolveHref(l.href)}" class="footer-link">${l.text}</a></li>`).join('')}
           </ul>
         </div>
 
@@ -38,7 +47,7 @@
         <div>
           <p class="footer-heading">Empresa</p>
           <ul class="footer-links">
-            ${d.footer.empresa.map(l => `<li><a href="${l.href}" class="footer-link">${l.text}</a></li>`).join('')}
+            ${d.footer.empresa.map(l => `<li><a href="${resolveHref(l.href)}" class="footer-link">${l.text}</a></li>`).join('')}
           </ul>
         </div>
 
@@ -67,7 +76,7 @@
         <div class="footer-bottom-inner container">
           <span class="footer-copy">&copy; ${year} ${d.brand.name}. Todos los derechos reservados.</span>
           <nav class="footer-legal">
-            ${d.footer.legal.map(l => `<a href="${l.href}">${l.text}</a>`).join('')}
+            ${d.footer.legal.map(l => `<a href="${resolveHref(l.href)}">${l.text}</a>`).join('')}
           </nav>
         </div>
       </div>
