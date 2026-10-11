@@ -520,6 +520,49 @@ a.gestion-link {
 }
 a.gestion-link:hover { color: var(--navy-900); }
 
+/* Demo destacada */
+.pillar-demo-note {
+  margin: var(--sp-4) 0 0;
+  font-size: var(--fs-sm);
+  color: var(--c-muted);
+}
+a.demo-try {
+  order: -1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+  border: 2px solid var(--c-accent);
+  border-radius: var(--r-lg);
+  background: var(--blue-50);
+  color: var(--c-text);
+  text-decoration: none;
+  transition: background var(--ease-base), transform var(--ease-base), box-shadow var(--ease-base);
+}
+a.demo-try:hover,
+a.demo-try:focus-visible {
+  background: var(--blue-100);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-blue);
+}
+.demo-try-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  color: var(--white);
+}
+.demo-try-icon svg { width: 22px; height: 22px; margin-left: 3px; }
+.demo-try-copy { display: flex; flex-direction: column; gap: .15rem; flex: 1; min-width: 0; }
+.demo-try-copy strong { font-size: var(--fs-lg); line-height: 1.25; color: var(--c-text); }
+.demo-try-copy small { font-size: var(--fs-sm); color: var(--navy-700); line-height: 1.4; }
+.demo-try-arrow { font-size: 1.4rem; font-weight: var(--fw-bold); color: var(--c-accent); }
+@media (prefers-reduced-motion: reduce) { a.demo-try { transition: none; } a.demo-try:hover { transform: none; } }
+
 /* ─── VERSA-INVENTARIO (landing) ──────────────────────────── */
 .vi-hero-visual {
   aspect-ratio: auto;
@@ -601,3 +644,15 @@ a.gestion-link:hover { color: var(--navy-900); }
   .outcome-card h3 { margin-top: var(--sp-8); }
   .gestion-num { width: 36px; height: 36px; font-size: .7rem; }
 }
+
+.vi-demo-box p.vi-demo-warning {
+  margin-top: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
+  border-left: 4px solid var(--orange-500);
+  border-radius: var(--r-base);
+  background: var(--orange-50);
+  color: var(--navy-800);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+.vi-demo-box p.vi-demo-warning a { color: var(--c-accent); font-weight: var(--fw-bold); white-space: nowrap; }

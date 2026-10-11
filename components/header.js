@@ -17,8 +17,22 @@
   const resolveNavHref = (href) =>
     href.startsWith('#') ? `${home}${href}` : `${base}${href}`;
 
+  const pillarMenu = d.nav.pillar_links
+    .map(l => `<a href="${base}${l.href}" role="menuitem">${l.label}</a>`)
+    .join('');
+
   const desktopLinks = d.nav.links
-    .map(l => `<a href="${resolveNavHref(l.href)}" class="nav-link">${l.label}</a>`)
+    .map(l => l.dropdown
+      ? `<div class="nav-dropdown">
+          <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            ${l.label} <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            ${pillarMenu}
+            <a href="${resolveNavHref(l.href)}" class="nav-dropdown-all" role="menuitem">Ver todas las soluciones →</a>
+          </div>
+        </div>`
+      : `<a href="${resolveNavHref(l.href)}" class="nav-link">${l.label}</a>`)
     .join('');
 
   const mobileLinks = [
@@ -83,4 +97,22 @@
     if (!panel) return;
     if (e.target.matches('.mobile-panel a')) panel.removeAttribute('open');
   });
+
+  // Soluciones dropdown: hover lo abre por CSS; click/tap y teclado con aria-expanded
+  const dropdown = document.querySelector('.nav-dropdown');
+  if (dropdown) {
+    const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    const setOpen = open => {
+      dropdown.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle.addEventListener('click', () => setOpen(!dropdown.classList.contains('open')));
+    document.addEventListener('click', e => { if (!dropdown.contains(e.target)) setOpen(false); });
+    dropdown.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { setOpen(false); toggle.focus(); }
+    });
+    dropdown.addEventListener('focusout', e => {
+      if (!dropdown.contains(e.relatedTarget)) setOpen(false);
+    });
+  }
 })();

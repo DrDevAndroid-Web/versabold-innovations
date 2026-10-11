@@ -18,7 +18,7 @@ window.SITE_DATA = {
 
   nav: {
     links: [
-      { href: '#soluciones',  label: 'Soluciones' },
+      { href: '#soluciones',  label: 'Soluciones', dropdown: true },
       { href: 'proyectos/',   label: 'Proyectos' },
       { href: '#proceso',     label: 'Cómo trabajamos' },
       { href: '#faq',         label: 'Preguntas' },
@@ -27,7 +27,7 @@ window.SITE_DATA = {
     ],
     pillar_links: [
       { href: 'desarrollo-web/',         label: 'Páginas Web' },
-      { href: 'control-inventario/',     label: 'Gestión de Negocio' },
+      { href: 'control-inventario/',     label: 'Gestión de Inventario' },
       { href: 'apps-android/',           label: 'Apps Android' },
       { href: 'gestion-redes-sociales/', label: 'Redes Sociales' },
       { href: 'notificaciones-sms/',     label: 'Notificaciones SMS' },
@@ -88,7 +88,7 @@ window.SITE_DATA = {
   footer: {
     servicios: [
       { text: 'Páginas Web',        href: 'desarrollo-web/' },
-      { text: 'Gestión de Negocio', href: 'control-inventario/' },
+      { text: 'Gestión de Inventario', href: 'control-inventario/' },
       { text: 'Apps Android',       href: 'apps-android/' },
       { text: 'Redes Sociales',     href: 'gestion-redes-sociales/' },
       { text: 'Notificaciones SMS', href: 'notificaciones-sms/' },
