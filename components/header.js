@@ -7,13 +7,15 @@
 (function renderHeader() {
   const d = window.SITE_DATA;
 
-  // Detect subdirectory by finding the main stylesheet link (style.css)
+  // Detect depth by counting '../' prefixes in the main stylesheet link
   const styleLink = document.querySelector('link[href*="style.css"]');
-  const inSubdir = styleLink && styleLink.getAttribute('href').startsWith('../');
-  const base = inSubdir ? '../' : '';
+  const styleHref = styleLink ? styleLink.getAttribute('href') : '';
+  const depthMatch = styleHref.match(/^(\.\.\/)+/);
+  const base = depthMatch ? depthMatch[0] : '';
+  const home = base || './';  // "/" o "../": nunca enlazar a index.html (duplica la home)
 
   const resolveNavHref = (href) =>
-    href.startsWith('#') ? `${base}index.html${href}` : `${base}${href}`;
+    href.startsWith('#') ? `${home}${href}` : `${base}${href}`;
 
   const desktopLinks = d.nav.links
     .map(l => `<a href="${resolveNavHref(l.href)}" class="nav-link">${l.label}</a>`)
@@ -34,7 +36,7 @@
       <div class="container">
         <div class="header-inner">
 
-          <a href="${base}index.html" class="brand" aria-label="VersaBold Innovations — Inicio">
+          <a href="${home}" class="brand" aria-label="VersaBold Innovations — Inicio">
             <img src="${base}assets/images/logo.png" alt="" width="40" height="40">
             <span class="brand-copy">
               <b>VersaBold</b>

@@ -1,0 +1,27 @@
+Actuá como desarrollador web senior y consultor de conversión. Este es el sitio web de mi negocio: https://versabold.com
+
+CONTEXTO DEL NEGOCIO:
+- VersaBold Innovations: soluciones digitales (diseño web, software a medida, sistemas de gestión) para pequeños y medianos negocios en Guantánamo, Cuba.
+- Es la primera versión del sitio. El objetivo principal es conseguir clientes: que pidan presupuesto por WhatsApp (+53 56189395) o dejen sus datos para descargar un lead magnet (plantilla de Excel gratuita para control de inventario).
+- Email: soporte@versabold.com
+
+AUDITORÍA PREVIA — PROBLEMAS A CORREGIR (ordenados por impacto):
+
+1. [CRÍTICO] El botón principal "Iniciar proyecto" apunta a "wa.me" sin número de teléfono. Está roto. Corregilo a https://wa.me/5356189395 con un mensaje predefinido en español, ej: "Hola, quiero información sobre sus servicios".
+
+2. [ALTO] La sección de testimonios ("Lo que dicen nuestros clientes") muestra 3 casos totalmente anónimos: sin nombre, sin negocio, sin foto. Esto destruye la credibilidad. Rediseñá la sección con este formato por testimonio: foto o avatar, nombre + negocio (ej: "María G. — Tienda de ropa, Guantánamo"), problema, solución y resultado medible. Dejá placeholders claros donde yo deba completar los datos reales de mis clientes.
+
+3. [MEDIO] La FAQ incluye "¿Cómo funciona el servicio de SMS?" que dice "Compramos bolsas de SMS en zdSMS". Nombrar al proveedor suena improvisado y ese servicio ni siquiera aparece en la sección Soluciones. Decidí con criterio: o lo presentás como un servicio formal dentro de Soluciones (sin mencionar al proveedor), o lo eliminás de las FAQ.
+
+4. [MEDIO] El formulario de la plantilla gratuita envía los datos a crm.seapodseo.com, un dominio externo que no coincide con la marca y genera desconfianza al pedir el email. Proponé la mejor solución técnica para que la captación ocurra bajo el dominio versabold.com (o explicá claramente qué es ese dominio si debe mantenerse).
+
+5. [MEDIO] Falta un llamado a la acción intermedio: hay mucho scroll entre el hero y el contacto final. Agregá un botón "Hablemos" o "Iniciar proyecto" después de la sección "Cómo trabajamos".
+
+6. [BAJO] No hay ninguna referencia de precios ("No hay precios fijos porque cada proyecto es distinto"). Agregá una línea que ayude a calificar leads sin comprometer presupuestos personalizados, ej: "Proyectos web desde $X USD" — dejá el monto como placeholder para que yo lo defina.
+
+INSTRUCCIONES DE TRABAJO:
+- Revisá el código del sitio (te voy a indicar la carpeta o repositorio) y aplicá los cambios directamente.
+- Mantené el diseño, los colores y el tono de comunicación actuales: profesional, claro, sin jerga técnica.
+- Todo el contenido en español.
+- Después de cada cambio importante, explicame brevemente qué hiciste y por qué.
+- Si algún punto necesita una decisión mía (textos reales de clientes, monto del precio base), no inventes datos: dejá placeholders visibles y pedímelos.

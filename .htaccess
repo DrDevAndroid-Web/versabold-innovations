@@ -1,0 +1,65 @@
+# ─────────────────────────────────────────────────────────────
+#  VersaBold Innovations — Cache & Headers
+#  LiteSpeed / Hostinger
+# ─────────────────────────────────────────────────────────────
+
+# ── Redirects SEO ─────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # www → non-www (301 permanente)
+  RewriteCond %{HTTP_HOST} ^www\.versabold\.com$ [NC]
+  RewriteRule ^(.*)$ https://versabold.com/$1 [R=301,L]
+
+  # /index.html y /carpeta/index.html → / y /carpeta/ (301 permanente)
+  # THE_REQUEST mira la URL pedida por el visitante, no la interna de DirectoryIndex (evita bucles)
+  RewriteCond %{THE_REQUEST} \s/+((?:[^\s?]*/)?)index\.html[\s?] [NC]
+  RewriteRule ^ https://versabold.com/%1 [R=301,L]
+
+  # HTTP → HTTPS (por si Hostinger no lo fuerza automáticamente)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+# ──────────────────────────────────────────────────────────────
+
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML: sin cache — siempre fresco
+  ExpiresByType text/html                 "access plus 0 seconds"
+
+  # CSS y JS: 1 año (el ?v=X.X en los imports fuerza recarga al cambiar)
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType text/javascript           "access plus 1 year"
+
+  # Imagenes y fuentes: 1 mes
+  ExpiresByType image/webp                "access plus 1 month"
+  ExpiresByType image/png                 "access plus 1 month"
+  ExpiresByType image/jpg                 "access plus 1 month"
+  ExpiresByType image/jpeg                "access plus 1 month"
+  ExpiresByType image/svg+xml             "access plus 1 month"
+  ExpiresByType image/x-icon              "access plus 1 month"
+  ExpiresByType font/woff2                "access plus 1 year"
+  ExpiresByType font/woff                 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # HTML: no-cache para que el navegador siempre pida el HTML fresco
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # CSS y JS versionados: cache largo, inmutable
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# ── LiteSpeed: purgar cache del servidor en cada request de HTML ──
+<IfModule LiteSpeed>
+  CacheLookup off
+</IfModule>

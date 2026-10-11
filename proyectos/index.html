@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio de VersaBold Innovations — productos propios y plataformas desarrolladas para clientes y aliados: Biloz, Monarcas, Ready Express Now, Yeni's Art.">
+  <meta name="keywords" content="portafolio versabold, proyectos digitales, software a medida, casos de éxito, productos propios">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://versabold.com/proyectos/">
+  <meta property="og:title" content="Proyectos — VersaBold Innovations">
+  <meta property="og:description" content="Productos propios y plataformas desarrolladas para clientes y aliados.">
+  <meta property="og:image" content="https://versabold.com/assets/images/proyecto-biloz-hero.webp">
+  <link rel="canonical" href="https://versabold.com/proyectos/">
+  <title>Proyectos — VersaBold Innovations</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../assets/images/logo.png">
+  <link rel="stylesheet" href="../style.css?v=2.3">
+  <link rel="stylesheet" href="../projects-page.css?v=1.1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Proyectos de VersaBold Innovations",
+    "url": "https://versabold.com/proyectos/",
+    "description": "Selección de proyectos, productos digitales y plataformas desarrolladas por VersaBold Innovations.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "VersaBold Innovations",
+      "url": "https://versabold.com/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="projects-skip-link" href="#contenido">Saltar al contenido</a>
+  <div id="header-root"></div>
+
+  <main id="contenido">
+    <section class="projects-hero">
+      <div class="container">
+        <div class="projects-hero-copy reveal">
+          <div class="projects-breadcrumbs"><a href="../">Inicio</a><span>/</span><span>Proyectos</span></div>
+          <p class="eyebrow">Portafolio VersaBold</p>
+          <h1>Proyectos que llevan <em>nuestro sello.</em></h1>
+          <p class="projects-lead">No solo construimos páginas. Diseñamos productos propios y plataformas digitales para clientes y aliados que ayudan a negocios y causas reales a operar mejor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-principles" aria-label="Tipos de colaboración">
+      <div class="container projects-principles-grid">
+        <div><small>PRODUCTOS</small><strong>Ideas convertidas en soluciones digitales propias</strong></div>
+        <div><small>CLIENTES</small><strong>Herramientas creadas alrededor de un negocio real</strong></div>
+        <div><small>ASOCIADOS</small><strong>Proyectos que evolucionan junto a VersaBold</strong></div>
+      </div>
+    </section>
+
+    <section class="section projects-list-section">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <div>
+            <p class="eyebrow">Portafolio</p>
+            <h2>Una selección en <em>crecimiento.</em></h2>
+          </div>
+        </div>
+        <div class="projects-list-grid" id="projects-list-grid"></div>
+      </div>
+    </section>
+
+    <section class="projects-next">
+      <div class="container projects-next-grid">
+        <div>
+          <p class="eyebrow">El próximo puede ser el tuyo</p>
+          <h2>Una necesidad real puede convertirse en un producto con futuro.</h2>
+        </div>
+        <div>
+          <p>Esta colección crecerá con nuevas páginas, sistemas, aplicaciones y negocios asociados a VersaBold.</p>
+          <a href="https://wa.me/5356189395?text=Hola%20VersaBold%2C%20quiero%20conversar%20sobre%20un%20proyecto%20digital" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Conversemos sobre tu proyecto ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+
+  <script src="../assets/icons.js?v=2.2"></script>
+  <script src="../data/site-data.js?v=2.4"></script>
+  <script src="../components/header.js?v=2.3"></script>
+  <script src="../components/footer.js?v=2.3"></script>
+  <script>
+    (function renderProjectsList() {
+      const d = window.SITE_DATA;
+      const grid = document.getElementById('projects-list-grid');
+      if (!d || !d.proyectos || !grid) return;
+
+      const html = d.proyectos.items.map(p => {
+        const external = p.external ? 'target="_blank" rel="noopener noreferrer"' : '';
+        const imgBlock = p.image
+          ? `<img src="../${p.image}" alt="${p.name} — ${p.tagline}" loading="lazy" width="800" height="450">`
+          : `<div class="project-card-img-placeholder" aria-hidden="true">${p.name.charAt(0)}</div>`;
+        return `
+          <a href="${p.href}" class="project-card reveal ${p.featured ? 'featured' : ''}" ${external}>
+            <div class="project-card-img">${imgBlock}</div>
+            <div class="project-card-body">
+              <span class="project-card-category">${p.category}</span>
+              <h3 class="project-card-name">${p.name}</h3>
+              <p class="project-card-tagline">${p.tagline}</p>
+              <p class="project-card-desc">${p.description}</p>
+              <span class="project-card-link">${p.external ? 'Visitar sitio' : 'Ver proyecto'} <span aria-hidden="true">${p.external ? '↗' : '→'}</span></span>
+            </div>
+          </a>
+        `;
+      }).join('');
+
+      grid.innerHTML = html;
+      if (window.setupReveal) window.setupReveal();
+    })();
+  </script>
+  <script src="../scripts/animations.js?v=2.2"></script>
+</body>
+</html>

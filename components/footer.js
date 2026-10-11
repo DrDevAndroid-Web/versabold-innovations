@@ -8,8 +8,9 @@
   const year = new Date().getFullYear();
 
   const styleLink = document.querySelector('link[href*="style.css"]');
-  const inSubdir = styleLink && styleLink.getAttribute('href').startsWith('../');
-  const base = inSubdir ? '../' : '';
+  const styleHref = styleLink ? styleLink.getAttribute('href') : '';
+  const depthMatch = styleHref.match(/^(\.\.\/)+/);
+  const base = depthMatch ? depthMatch[0] : '';
 
   const resolveHref = (href) =>
     href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel')

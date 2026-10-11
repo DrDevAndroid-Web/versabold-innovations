@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="VersaBold Innovations — Soluciones digitales a medida para el crecimiento de tu negocio en Guantánamo, Cuba. Web, Software, Android, Sistemas, SMS.">
-  <meta name="keywords" content="agencia digital, desarrollo web, aplicaciones android, sistemas gestión, notificaciones sms, guantanamo cuba">
+  <meta name="description" content="VersaBold Innovations — Soluciones digitales a medida para el crecimiento de tu negocio. Web, Software, Android, Sistemas, SMS. Operamos 100% online.">
+  <meta name="keywords" content="agencia digital, desarrollo web, aplicaciones android, sistemas gestión, notificaciones sms, software a medida">
   <meta name="author" content="VersaBold Innovations">
   <meta name="theme-color" content="#0F172A">
 
@@ -15,6 +15,7 @@
   <meta property="og:description" content="Convertimos ideas en soluciones digitales que hacen crecer negocios.">
   <meta property="og:image"       content="https://versabold.com/assets/images/hero-main.webp">
 
+  <link rel="canonical" href="https://versabold.com/">
   <title>VersaBold Innovations — Soluciones Digitales para tu Negocio</title>
 
   <!-- Fonts -->
@@ -26,7 +27,34 @@
   <link rel="icon" type="image/png" href="assets/images/logo.png">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2.2">
+
+  <!-- Datos estructurados -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://versabold.com/#organization",
+        "name": "VersaBold Innovations",
+        "url": "https://versabold.com/",
+        "logo": "https://versabold.com/assets/images/logo.png",
+        "email": "soporte@versabold.com",
+        "telephone": "+5356189395",
+        "sameAs": ["https://www.facebook.com/versabold"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://versabold.com/#website",
+        "name": "VersaBold Innovations",
+        "url": "https://versabold.com/",
+        "inLanguage": "es",
+        "publisher": { "@id": "https://versabold.com/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -37,31 +65,417 @@
   <main id="main-content">
 
     <!-- ── HERO ─────────────────────────────────────────── -->
-    <div id="hero-root"></div>
+    <section class="hero" id="inicio">
+      <div class="hero-visual">
+        <img src="assets/images/hero-main.webp" alt="VersaBold Innovations — Soluciones digitales a medida" class="hero-img" loading="eager">
+        <div class="hero-img-overlay"></div>
+      </div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Web · Software · Sistemas · Crecimiento</p>
+        <h1>Convertimos ideas en <em>soluciones digitales</em> que hacen crecer negocios.</h1>
+        <p class="hero-lead">Diseñamos herramientas a medida para que tu negocio proyecte confianza, controle mejor su información y esté preparado para crecer.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5356189395?text=Hola%20VersaBold%2C%20me%20gustar%C3%ADa%20iniciar%20un%20proyecto" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+            Iniciar proyecto ↗
+          </a>
+          <a href="#soluciones" class="text-link">
+            Ver soluciones <span>↓</span>
+          </a>
+        </div>
+        <div class="hero-proof" aria-label="Valores de VersaBold">
+          <div><b>01</b><span>Versatilidad</span></div><div><b>02</b><span>Audacia</span></div><div><b>03</b><span>Innovación</span></div>
+        </div>
+      </div>
+    </section>
 
     <!-- ── VALUE STRIP ──────────────────────────────────── -->
-    <div id="value-strip-root"></div>
+    <div class="value-strip" aria-label="Propuesta de valor">
+      <p>VERSATILE <span class="vs-accent">×</span> BOLD <span class="vs-accent">×</span> INNOVATIVE</p>
+      <p class="vs-sub">Tecnología que se adapta. Soluciones que hacen crecer.</p>
+    </div>
 
     <!-- ── SERVICIOS / PILLAR CARDS ─────────────────────── -->
-    <div id="servicios-root"></div>
+    <section class="section services-section" id="soluciones">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Soluciones</p>
+            <h2>Cada necesidad tiene <em>su propia solución.</em></h2>
+          </div>
+          <p>Elige el área que quieres mejorar. Cada servicio cuenta con su propia página, alcance y punto de partida.</p>
+        </div>
+        <div class="service-grid">
+
+            <a href="desarrollo-web/" class="service-card reveal featured">
+              <div class="service-num">01</div>
+              <div class="service-img-wrap">
+                <img src="assets/images/servicio-web.webp" alt="Páginas Web Profesionales" loading="lazy" width="400" height="220">
+              </div>
+              <h3>Páginas Web Profesionales</h3>
+              <p>Tu negocio disponible 24/7. Desde una landing hasta un sitio completo con panel propio y dominio.</p>
+              <div class="service-tags">
+                <span>Web</span><span>Hosting</span><span>Panel</span><span>SEO</span>
+              </div>
+              <span class="service-card-link">Ver solución completa <span>↗</span></span>
+            </a>
+
+            <a href="control-inventario/" class="service-card reveal ">
+              <div class="service-num">02</div>
+              <div class="service-img-wrap">
+                <img src="assets/images/servicio-gestion.webp" alt="Gestión de Negocio" loading="lazy" width="400" height="220">
+              </div>
+              <h3>Gestión de Negocio</h3>
+              <p>Controla inventario, ventas, empleados y almacén. Desde un módulo básico hasta un sistema completo.</p>
+              <div class="service-tags">
+                <span>Inventario</span><span>Stock</span><span>Reportes</span><span>Usuarios</span>
+              </div>
+              <span class="service-card-link">Ver solución completa <span>↗</span></span>
+            </a>
+
+            <a href="apps-android/" class="service-card reveal ">
+              <div class="service-num">03</div>
+              <div class="service-img-wrap">
+                <img src="assets/images/servicio-android.webp" alt="Aplicaciones Android" loading="lazy" width="400" height="220">
+              </div>
+              <h3>Aplicaciones Android</h3>
+              <p>Una app creada para tu forma de trabajar. Funciona offline, se instala directo, sin Play Store.</p>
+              <div class="service-tags">
+                <span>Android</span><span>Offline</span><span>A medida</span><span>GPS</span>
+              </div>
+              <span class="service-card-link">Ver solución completa <span>↗</span></span>
+            </a>
+
+            <a href="gestion-redes-sociales/" class="service-card reveal ">
+              <div class="service-num">04</div>
+              <div class="service-img-wrap">
+                <img src="assets/images/servicio-redes.webp" alt="Gestión de Redes Sociales" loading="lazy" width="400" height="220">
+              </div>
+              <h3>Gestión de Redes Sociales</h3>
+              <p>Presencia constante en Facebook e Instagram sin que tengas que pensar qué publicar ni cuándo.</p>
+              <div class="service-tags">
+                <span>Facebook</span><span>Instagram</span><span>Contenido</span><span>WhatsApp</span>
+              </div>
+              <span class="service-card-link">Ver solución completa <span>↗</span></span>
+            </a>
+
+            <a href="notificaciones-sms/" class="service-card reveal ">
+              <div class="service-num">05</div>
+              <div class="service-img-wrap">
+                <img src="assets/images/servicio-sms.webp" alt="Notificaciones SMS" loading="lazy" width="400" height="220">
+              </div>
+              <h3>Notificaciones SMS</h3>
+              <p>Envía confirmaciones de pedido y campañas directamente al teléfono de tus clientes. Sin apps.</p>
+              <div class="service-tags">
+                <span>SMS</span><span>Pedidos</span><span>Campañas</span><span>Automatización</span>
+              </div>
+              <span class="service-card-link">Ver solución completa <span>↗</span></span>
+            </a>
+
+        </div>
+      </div>
+    </section>
 
     <!-- ── MANIFESTO ────────────────────────────────────── -->
-    <div id="manifesto-root"></div>
+    <section class="manifesto" id="nosotros">
+      <div class="manifesto-img-wrap" aria-hidden="true">
+        <img src="assets/images/versabold-equipo.webp" alt="" loading="lazy">
+      </div>
+      <div class="manifesto-copy reveal">
+        <p class="eyebrow light">Por qué VersaBold</p>
+        <h2>No adaptamos tu negocio al software. <em>Adaptamos la tecnología a tu negocio.</em></h2>
+        <p>VersaBold nace de tres ideas: la versatilidad para entender realidades distintas, la audacia para construir mejor y la innovación para convertir tecnología en crecimiento.</p>
+        <div class="manifesto-values">
+
+            <div>
+              <b>V</b>
+              <span>
+                <strong>Versatile</strong>
+                <em>Nos adaptamos</em>
+              </span>
+            </div>
+
+            <div>
+              <b>B</b>
+              <span>
+                <strong>Bold</strong>
+                <em>Rompemos límites</em>
+              </span>
+            </div>
+
+            <div>
+              <b>+</b>
+              <span>
+                <strong>Innovative</strong>
+                <em>Evolucionamos</em>
+              </span>
+            </div>
+
+        </div>
+      </div>
+    </section>
 
     <!-- ── PROCESO ──────────────────────────────────────── -->
-    <div id="proceso-root"></div>
+    <section class="section proceso-section" id="proceso">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <div>
+            <p class="eyebrow">Cómo trabajamos</p>
+            <h2>De una necesidad a una <em>solución real.</em></h2>
+          </div>
+        </div>
+        <div class="proceso-carousel" id="proceso-carousel">
+
+            <div class="proceso-slide active" data-index="0">
+              <div class="proceso-slide-img">
+                <img src="assets/images/proceso-01.webp" alt="Descubrimos" loading="eager">
+              </div>
+              <div class="proceso-slide-copy">
+                <b>01</b>
+                <h3>Descubrimos</h3>
+                <p>Entendemos el problema, el negocio y el objetivo.</p>
+              </div>
+            </div>
+
+            <div class="proceso-slide " data-index="1">
+              <div class="proceso-slide-img">
+                <img src="assets/images/proceso-02.webp" alt="Diseñamos" loading="lazy">
+              </div>
+              <div class="proceso-slide-copy">
+                <b>02</b>
+                <h3>Diseñamos</h3>
+                <p>Definimos la experiencia y la solución adecuada.</p>
+              </div>
+            </div>
+
+            <div class="proceso-slide " data-index="2">
+              <div class="proceso-slide-img">
+                <img src="assets/images/proceso-03.webp" alt="Construimos" loading="lazy">
+              </div>
+              <div class="proceso-slide-copy">
+                <b>03</b>
+                <h3>Construimos</h3>
+                <p>Desarrollamos, probamos y optimizamos.</p>
+              </div>
+            </div>
+
+            <div class="proceso-slide " data-index="3">
+              <div class="proceso-slide-img">
+                <img src="assets/images/proceso-04.webp" alt="Lanzamos" loading="lazy">
+              </div>
+              <div class="proceso-slide-copy">
+                <b>04</b>
+                <h3>Lanzamos</h3>
+                <p>Publicamos y dejamos todo listo para operar.</p>
+              </div>
+            </div>
+
+            <div class="proceso-slide " data-index="4">
+              <div class="proceso-slide-img">
+                <img src="assets/images/proceso-05.webp" alt="Evolucionamos" loading="lazy">
+              </div>
+              <div class="proceso-slide-copy">
+                <b>05</b>
+                <h3>Evolucionamos</h3>
+                <p>Medimos, mantenemos y escalamos contigo.</p>
+              </div>
+            </div>
+
+          <div class="proceso-dots">
+            <button class="proceso-dot active" data-dot="0" aria-label="Paso 1"></button><button class="proceso-dot " data-dot="1" aria-label="Paso 2"></button><button class="proceso-dot " data-dot="2" aria-label="Paso 3"></button><button class="proceso-dot " data-dot="3" aria-label="Paso 4"></button><button class="proceso-dot " data-dot="4" aria-label="Paso 5"></button>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ── TESTIMONIOS ──────────────────────────────────── -->
-    <div id="testimonios-root"></div>
+    <section class="section testimonials-section" id="testimonios">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <div>
+            <p class="eyebrow">Lo que dicen nuestros clientes</p>
+            <h2>Empresarios que <em>decidieron crecer.</em></h2>
+          </div>
+        </div>
+        <div class="testimonials-grid">
+
+            <div class="testimonial-card reveal">
+              <div class="testimonial-header">
+                <img src="assets/images/testimonial-darma.webp" alt="Darma Alcántara de la Cruz" width="52" height="52" class="author-avatar" loading="lazy">
+                <div>
+                  <div class="author-name">Darma Alcántara de la Cruz</div>
+                  <div class="author-role">Negocio digital · Emprendedora</div>
+                </div>
+              </div>
+              <div class="stars"><svg width="14" height="14" class="icon icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" class="icon icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" class="icon icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" class="icon icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" class="icon icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+              <div class="testimonial-body">
+                <p><strong>Problema:</strong> No tenía presencia en internet ni forma de que los clientes la encontraran.</p>
+                <p><strong>Solución:</strong> Página web profesional</p>
+              </div>
+              <div class="testimonial-result">↑ Clientes nuevos llegando por internet desde el primer mes</div>
+
+            </div>
+
+            <div class="testimonial-card reveal">
+              <div class="testimonial-header">
+                <img src="assets/images/testimonial-dairis.webp" alt="Dairis Domínguez" width="52" height="52" class="author-avatar" loading="lazy">
+                <div>
+                  <div class="author-name">Dairis Domínguez</div>
+                  <div class="author-role">LalyRos · Dueña</div>
+                </div>
+              </div>
+              <div class="stars"><svg width="14" height="14" class="icon icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" class="icon icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" class="icon icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" class="icon icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><svg width="14" height="14" class="icon icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+              <div class="testimonial-body">
+                <p><strong>Problema:</strong> Manejaba todo a mano y perdía ventas por desorden.</p>
+                <p><strong>Solución:</strong> Sistema de gestión de inventario</p>
+              </div>
+              <div class="testimonial-result">↑ Control total de productos y ventas sin papeles</div>
+
+            </div>
+
+        </div>
+      </div>
+    </section>
 
     <!-- ── LEAD MAGNET ──────────────────────────────────── -->
-    <div id="lead-magnet-root"></div>
+    <section class="lead-magnet-section" id="lead-magnet">
+      <div class="container">
+
+        <!-- Copy centrado a todo lo ancho -->
+        <div class="lm-copy reveal">
+          <div class="lead-magnet-badge">🎁 Gratis para ti</div>
+          <h2>Recibe gratis la plantilla para controlar tu inventario</h2>
+          <p>Escríbenos por WhatsApp y te enviamos la plantilla lista para usar, con una guía rápida para empezar hoy mismo.</p>
+          <a href="https://wa.me/5356189395?text=Hola%2C%20quiero%20mi%20plantilla%20gratis%20de%20control%20de%20inventario" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+            Recibir mi plantilla por WhatsApp ↗
+          </a>
+          <p class="lead-magnet-disclaimer">Sin spam. Solo recursos útiles para tu negocio.</p>
+        </div>
+
+        <!-- Slider de guía de uso -->
+        <div class="lm-slider-wrap reveal">
+          <div class="lm-slider" id="lm-slider">
+
+              <div class="lm-slide active" aria-hidden="false">
+                <img src="assets/images/guia-manual-inicio.webp" alt="Manual de inicio — Control Básico de Inventario" loading="lazy">
+              </div>
+
+              <div class="lm-slide " aria-hidden="true">
+                <img src="assets/images/guia-paso-1.webp" alt="Paso 1 · Registra tus productos" loading="lazy">
+              </div>
+
+              <div class="lm-slide " aria-hidden="true">
+                <img src="assets/images/guia-paso-2.webp" alt="Paso 2 · Registra los movimientos" loading="lazy">
+              </div>
+
+              <div class="lm-slide " aria-hidden="true">
+                <img src="assets/images/guia-paso-3.webp" alt="Paso 3 · Revisa el resumen" loading="lazy">
+              </div>
+
+              <div class="lm-slide " aria-hidden="true">
+                <img src="assets/images/guia-paso-4.webp" alt="Paso 4 · Interpreta las alertas" loading="lazy">
+              </div>
+
+              <div class="lm-slide " aria-hidden="true">
+                <img src="assets/images/guia-paso-5.webp" alt="Paso 5 · Prepara el reabastecimiento" loading="lazy">
+              </div>
+
+          </div>
+          <div class="lm-slider-controls">
+            <button class="lm-arrow" id="lm-prev" aria-label="Anterior">←</button>
+            <div class="lm-dots">
+              <button class="lm-dot active" data-index="0" aria-label="Slide 1"></button><button class="lm-dot " data-index="1" aria-label="Slide 2"></button><button class="lm-dot " data-index="2" aria-label="Slide 3"></button><button class="lm-dot " data-index="3" aria-label="Slide 4"></button><button class="lm-dot " data-index="4" aria-label="Slide 5"></button><button class="lm-dot " data-index="5" aria-label="Slide 6"></button>
+            </div>
+            <button class="lm-arrow" id="lm-next" aria-label="Siguiente">→</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- ── FAQ ──────────────────────────────────────────── -->
-    <div id="faq-root"></div>
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <div>
+            <p class="eyebrow">Preguntas frecuentes</p>
+            <h2>Antes de <em>empezar.</em></h2>
+          </div>
+        </div>
+        <div class="faq-list">
+
+            <details class="faq-item reveal">
+              <summary class="faq-question">
+                <span>¿Solo trabajan con empresas grandes?</span>
+                <span class="faq-toggle">+</span>
+              </summary>
+              <div class="faq-answer"><p>No. Nos especializamos en pequeños y medianos negocios. De hecho, es donde mejor podemos ayudar: soluciones con impacto real sin complejidades innecesarias.</p></div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary class="faq-question">
+                <span>¿Necesito saber de tecnología?</span>
+                <span class="faq-toggle">+</span>
+              </summary>
+              <div class="faq-answer"><p>No. Nos encargamos de todo lo técnico y te explicamos cada decisión en lenguaje sencillo. Sin jerga, sin sorpresas.</p></div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary class="faq-question">
+                <span>¿Pueden crear algo totalmente personalizado?</span>
+                <span class="faq-toggle">+</span>
+              </summary>
+              <div class="faq-answer"><p>Sí, siempre. No vendemos plantillas de catálogo. Cada solución se diseña entendiendo tu negocio, tus procesos y tus objetivos.</p></div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary class="faq-question">
+                <span>¿Tienen soporte después de entregar el proyecto?</span>
+                <span class="faq-toggle">+</span>
+              </summary>
+              <div class="faq-answer"><p>Sí. Ofrecemos acompañamiento continuo según el tipo de solución. No desaparecemos una vez entregado el proyecto.</p></div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary class="faq-question">
+                <span>¿Cuánto tarda un proyecto?</span>
+                <span class="faq-toggle">+</span>
+              </summary>
+              <div class="faq-answer"><p>Depende del alcance. Una landing page puede estar lista en 2-3 semanas. Un sistema completo puede tomar 2-3 meses. En la primera consulta definimos el cronograma exacto.</p></div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary class="faq-question">
+                <span>¿Cuál es el precio?</span>
+                <span class="faq-toggle">+</span>
+              </summary>
+              <div class="faq-answer"><p>Cada proyecto es distinto, pero estos son nuestros puntos de partida: Páginas Web desde 0 CUP (plan Emprendedor) · Control de Inventario Web 1 000 CUP/mes · Sistemas a medida desde 25 000 CUP · Apps Android desde 25 000 CUP · Gestión de Redes 5 000 CUP/mes · Bolsas de SMS desde 1 000 CUP. Agendemos una conversación sin compromiso y armamos un presupuesto claro para tu caso.</p></div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary class="faq-question">
+                <span>¿Cómo funciona el servicio de SMS?</span>
+                <span class="faq-toggle">+</span>
+              </summary>
+              <div class="faq-answer"><p>Ofrecemos un servicio llave en mano de notificaciones SMS. Tú nos dices qué mensajes enviar y cuándo, nosotros lo ejecutamos y te damos seguimiento.</p></div>
+            </details>
+
+        </div>
+      </div>
+    </section>
 
     <!-- ── CTA FINAL ────────────────────────────────────── -->
-    <div id="cta-root"></div>
+    <section class="cta-section" id="cta-final">
+      <div class="cta-grid-bg" aria-hidden="true"></div>
+      <div class="cta-copy reveal">
+        <p class="eyebrow">Hablemos</p>
+        <h2>Tu negocio tiene potencial. <em>Construyámoslo juntos.</em></h2>
+        <p>Cuéntanos qué necesitas y encontraremos la solución adecuada para tu caso.</p>
+        <a href="https://wa.me/5356189395?text=Hola%20VersaBold%2C%20me%20gustar%C3%ADa%20iniciar%20un%20proyecto" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+          Iniciar proyecto ↗
+        </a>
+      </div>
+      <div class="cta-mark" aria-hidden="true">V</div>
+    </section>
 
   </main>
 
@@ -69,13 +483,13 @@
   <div id="footer-root"></div>
 
   <!-- ── SCRIPTS (orden crítico) ────────────────────────── -->
-  <script src="assets/icons.js"></script>
-  <script src="data/site-data.js"></script>
-  <script src="components/header.js"></script>
-  <script src="components/footer.js"></script>
-  <script src="scripts/content-renderer.js"></script>
-  <script src="scripts/animations.js"></script>
-  <script src="scripts/chat-widget.js"></script>
+  <script src="assets/icons.js?v=2.2"></script>
+  <script src="data/site-data.js?v=2.3"></script>
+  <script src="components/header.js?v=2.3"></script>
+  <script src="components/footer.js?v=2.3"></script>
+  <script src="scripts/home-interactions.js?v=1.0"></script>
+  <script src="scripts/animations.js?v=2.2"></script>
+  <script src="scripts/chat-widget.js?v=2.2"></script>
 
 </body>
 </html>

@@ -670,6 +670,22 @@ a.service-card:hover .service-card-link { gap: var(--sp-3); }
   border-radius: var(--r-base);
   transition: border-color var(--ease-base), background var(--ease-base);
 }
+.testimonial-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  width: fit-content;
+  min-height: 44px;
+  margin-top: var(--sp-5);
+  color: var(--blue-500);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+}
+.testimonial-link:hover { color: var(--white); }
+.testimonial-link:focus-visible {
+  outline: 3px solid var(--orange-500);
+  outline-offset: 4px;
+}
 .testimonial-card:hover {
   border-color: rgba(249,115,22,.35);
   background: rgba(255,255,255,.06);

@@ -98,12 +98,12 @@ async function initBlogPost() {
       </header>
       <div class="post-body">${post.content}</div>
       <div class="post-footer">
-        <a href="index.html" class="btn-back">← Volver al blog</a>
+        <a href="./" class="btn-back">← Volver al blog</a>
       </div>
     `;
 
   } catch (err) {
-    container.innerHTML = `<p>No se pudo cargar el post. <a href="index.html">Volver al blog</a></p>`;
+    container.innerHTML = `<p>No se pudo cargar el post. <a href="./">Volver al blog</a></p>`;
     console.error("Post error:", err);
   }
 }
