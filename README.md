@@ -12,6 +12,7 @@ Guía para editar textos: [`QUICK-EDIT.md`](QUICK-EDIT.md).
 |---|---|
 | `index.html` | Home. El contenido está escrito en el HTML (indexable sin JS). |
 | `desarrollo-web/`, `control-inventario/`, `apps-android/`, `gestion-redes-sociales/`, `notificaciones-sms/` | Páginas pilar de cada servicio |
+| `branding/` | Página pilar de branding, identidad visual y diseño gráfico |
 | `versa-inventario/` | Página de producto de Versa-Inventario |
 | `versa-inventario/demo/` | Demo web del producto (IndexedDB, datos locales, `noindex`) |
 | `proyectos/`, `proyectos/biloz/` | Portafolio y casos |

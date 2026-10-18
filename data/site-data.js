@@ -31,6 +31,7 @@ window.SITE_DATA = {
       { href: 'apps-android/',           label: 'Apps Android' },
       { href: 'gestion-redes-sociales/', label: 'Redes Sociales' },
       { href: 'notificaciones-sms/',     label: 'Notificaciones SMS' },
+      { href: 'branding/',                label: 'Branding e identidad visual' },
     ],
   },
 
@@ -92,6 +93,7 @@ window.SITE_DATA = {
       { text: 'Apps Android',       href: 'apps-android/' },
       { text: 'Redes Sociales',     href: 'gestion-redes-sociales/' },
       { text: 'Notificaciones SMS', href: 'notificaciones-sms/' },
+      { text: 'Branding e identidad visual', href: 'branding/' },
     ],
     empresa: [
       { text: 'Inicio',   href: '#inicio' },
